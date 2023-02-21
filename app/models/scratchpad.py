@@ -15,7 +15,7 @@ class Scratchpad(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
 
-    user = db.relationship("User", back_populates="task")
+    user = db.relationship("User", back_populates="scratchpad")
 
     def format_date(self, date):
         date_year = date.year
