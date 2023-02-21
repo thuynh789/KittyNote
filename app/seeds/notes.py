@@ -47,7 +47,7 @@ def seed_notes():
     )
     note_8 = Note(
         userId= 1,
-        notebookId= 3,
+        notebookId= 4,
         title= 'Note 8',
         content= 'They are meticulous about keeping themselves clean, and they spend a lot of time grooming their fur.'
     )
@@ -55,7 +55,7 @@ def seed_notes():
 # user 2 notes
     note_9 = Note(
         userId= 2,
-        notebookId= 4,
+        notebookId= 5,
         title= 'Note 9',
         content= 'This not only helps them look their best, but it also helps them stay healthy by removing dirt and parasites from their fur.'
     )

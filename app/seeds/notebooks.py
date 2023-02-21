@@ -4,25 +4,30 @@ def seed_notebooks():
 
     notebook_1 = Notebook(
         userId= 1,
-        title= 'Note 1'
+        title= 'Purrfect Pages'
     )
     notebook_2 = Notebook(
         userId= 1,
-        title= 'Note 1'
+        title= 'Feline Files'
     )
     notebook_3 = Notebook(
         userId= 1,
-        title= 'Note 1'
+        title= 'Catnip Chronicles'
     )
     notebook_4 = Notebook(
+        userId= 1,
+        title= 'Paw Prints'
+    )
+    notebook_5 = Notebook(
         userId= 2,
-        title= 'Note 1'
+        title= 'Scratching Post Scribbles'
     )
 
     db.session.add(notebook_1)
     db.session.add(notebook_2)
     db.session.add(notebook_3)
     db.session.add(notebook_4)
+    db.session.add(notebook_5)
     db.session.commit()
 
 
