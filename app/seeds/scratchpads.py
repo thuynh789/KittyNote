@@ -2,15 +2,15 @@ from app.models import db, Scratchpad, environment, SCHEMA
 
 def seed_scratchpads():
 
-    task_1 = Scratchpad(
+    scratchpad_1 = Scratchpad(
         userId= 1,
         content= ''
     )
-    task_2 = Scratchpad(
+    scratchpad_2 = Scratchpad(
         userId= 2,
         content= ''
     )
-    task_3 = Scratchpad(
+    scratchpad_3 = Scratchpad(
         userId= 3,
         content= ''
     )
