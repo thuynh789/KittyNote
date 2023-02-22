@@ -10,9 +10,15 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(255), nullable=False)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    hashed_password = db.Column(db.String(50), nullable=False)
+
+    notebook = db.relationship("Notebook", back_populates="user", cascade="all, delete")
+    note = db.relationship("Note", back_populates="user", cascade="all, delete")
+    task = db.relationship("Task", back_populates="user", cascade="all, delete")
+    scratchpad = db.relationship("Scratchpad", back_populates="user", cascade="all, delete")
+
 
     @property
     def password(self):
