@@ -13,6 +13,16 @@ function Navigation({ isLoaded }){
 			<div >
               <DemoUser />
             </div>
+			<div>
+          		<NavLink className="navlink" to="/notebooks">
+              	Notebooks
+          		</NavLink>
+       		</div>
+			<div>
+          		<NavLink className="navlink" to="/notes">
+              	Notes
+          		</NavLink>
+       		</div>
 			<li>
 				<NavLink exact to="/">Home</NavLink>
 			</li>
