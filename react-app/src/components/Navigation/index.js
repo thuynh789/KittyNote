@@ -20,7 +20,7 @@ function Navigation({ isLoaded }){
        		</div>
 			<div>
           		<NavLink className="navlink" to="/notes">
-              	Notes
+              	Note
           		</NavLink>
        		</div>
 			<li>
