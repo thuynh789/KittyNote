@@ -6,30 +6,69 @@ const DELETE_NOTEBOOK = 'notebooks/DELETE_NOTEBOOK';
 
 
 // ACTION CREATORS
-export const getUserNotebooksAC= (notebooks) => ({
+export const getUserNotebooks_AC= (notebooks) => ({
     type: GET_USER_NOTEBOOKS,
     payload: notebooks
   });
 
-export const getOneNotebookAC= (notebook) => ({
+export const getOneNotebook_AC= (notebook) => ({
     type: ONE_NOTEBOOK,
     payload: notebook
   });
 
-export const createNotebookAC= (notebook) => ({
+export const createNotebook_AC= (notebook) => ({
     type: CREATE_NOTEBOOK,
     payload: notebook
   });
 
-export const updateNotebookAC= (notebook) => ({
+export const updateNotebook_AC= (notebook) => ({
     type: UPDATE_NOTEBOOK,
     payload: notebook
   });
 
-export const deleteNotebookAC= (notebookId) => ({
+export const deleteNotebook_AC= (notebookId) => ({
     type: DELETE_NOTEBOOK,
     payload: notebookId
   });
 
 
 // THUNKS
+
+export const getUserNotebooks_thunk = () => async (dispatch) => {
+  const res = await fetch('/api/notebooks/')
+  if (res.ok) {
+      const data = await res.json()
+      dispatch(getUserNotebooks_AC(data))
+      return data
+  }
+  return res
+}
+
+
+// REDUCER
+const initialState = {
+  allNotebooks: {},
+  singleNotebook: {}
+};
+
+export default function cartReducer(state = initialState, action) {
+  switch (action.type) {
+
+    case GET_USER_NOTEBOOKS: {
+      const newState = {}
+      action.payload.forEach(notebook => {
+        newState[notebook.id] = notebook
+      })
+      return {
+        ...state,
+        allNotebooks: newState
+      }
+    }
+
+
+
+
+    default:
+      return state
+  }
+}
