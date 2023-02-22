@@ -33,6 +33,5 @@ class Notebook(db.Model):
             'userId': self.userId,
             'title': self.title,
             'created_at': self.format_date(self.created_at),
-            'updated_at': self.format_date(self.updated_at),
-            "notes": [note.to_dict() for note in self.notes]
+            'updated_at': self.format_date(self.updated_at)
         }
