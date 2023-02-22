@@ -10,7 +10,7 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     title = db.Column(db.String(100), nullable=False)
-    content = db.Column(db.String(1000), nullable=False)
+    is_completed = db.Column(db.Boolean, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
@@ -32,7 +32,7 @@ class Task(db.Model):
             'id': self.id,
             'userId': self.userId,
             'title': self.title,
-            'content': self.content,
+            'is_completed': self.is_completed,
             'created_at': self.format_date(self.created_at),
             'updated_at': self.format_date(self.updated_at)
         }
