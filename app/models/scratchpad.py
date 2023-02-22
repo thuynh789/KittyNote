@@ -9,7 +9,6 @@ class Scratchpad(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.String(1000), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
@@ -31,7 +30,6 @@ class Scratchpad(db.Model):
         return {
             'id': self.id,
             'userId': self.userId,
-            'title': self.title,
             'content': self.content,
             'created_at': self.format_date(self.created_at),
             'updated_at': self.format_date(self.updated_at)
