@@ -5,18 +5,18 @@ def seed_tasks():
     task_1 = Task(
         userId= 1,
         title= 'Purrfect Pages',
-        content
+        is_completed=None
     )
 
 
-    db.session.add(notebook_1)
+    db.session.add(task_1)
     db.session.commit()
 
 
 def undo_tasks():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.notebooks RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.tasks RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM notebooks")
+        db.session.execute("DELETE FROM tasks")
 
     db.session.commit()

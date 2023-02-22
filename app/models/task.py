@@ -10,7 +10,7 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     title = db.Column(db.String(100), nullable=False)
-    is_completed = db.Column(db.Boolean, nullable=True)
+    is_completed = db.Column(db.Boolean, nullable=False, default=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
