@@ -59,5 +59,18 @@ def create_notebook():
 #UPDATE/EDIT NOTEBOOK
 @notebook_routes.route("/<int:id>", methods=['PUT'])
 @login_required
-def edit_notebook():
+def edit_notebook(id):
+    notebook = Notebook.query.get(id)
+    if notebook is None:
+        return jsonify({'error': 'Notebook not found'}),404
+    if current_user.id != notebook.userId:
+        return jsonify({'error': 'Unauthorized'}), 401
+
     form = NotebookForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        notebook.title = form.data['title']
+        db.session.commit()
+        return notebook.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
