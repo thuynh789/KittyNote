@@ -59,7 +59,7 @@ def create_notebook():
 #UPDATE/EDIT NOTEBOOK
 @notebook_routes.route("/<int:id>", methods=['PUT'])
 @login_required
-def edit_notebook(id):
+def update_notebook(id):
     notebook = Notebook.query.get(id)
     if notebook is None:
         return jsonify({'error': 'Notebook not found'}),404
@@ -74,3 +74,16 @@ def edit_notebook(id):
         return notebook.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
+
+#DELETE NOTEBOOK
+@notebook_routes.route("/<int:id>", methods=['DELETE'])
+@login_required
+def delete_notebook(id):
+    notebook = Notebook.query.get(id)
+    if notebook is None:
+        return jsonify({'error': 'Notebook not found'}),404
+    if current_user.id != notebook.userId:
+        return jsonify({'error': 'Unauthorized'}), 401
+    db.session.delete(notebook)
+    db.session.commit()
+    return jsonify({"message": "Notebook deleted"}), 200
