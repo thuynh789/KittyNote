@@ -38,7 +38,7 @@ export const getUserNotebooks_thunk = () => async (dispatch) => {
   const res = await fetch('/api/notebooks/')
   if (res.ok) {
       const data = await res.json()
-      dispatch(getUserNotebooks_AC(data))
+      dispatch(getUserNotebooks_AC(data.Notebooks))
       return data
   }
   return res
