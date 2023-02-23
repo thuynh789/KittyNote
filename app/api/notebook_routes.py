@@ -12,7 +12,9 @@ notebook_routes = Blueprint('notebooks', __name__)
 @notebook_routes.route("/")
 @login_required
 def get_user_notebooks():
+    print('WE IN THE NOTEBOOKS ROUTE')
     allNotebooks = Notebook.query.filter(Notebook.userId == current_user.id).all()
+    print(allNotebooks)
     return jsonify({"Notebooks": [notebook.to_dict() for notebook in allNotebooks]})
 
 
@@ -20,6 +22,7 @@ def get_user_notebooks():
 @notebook_routes.route("/<int:id>")
 @login_required
 def get_one_notebook(id):
+    print('--------WE ARE IN NOTEBOOK DETAILS ROUTE---------')
     oneNotebook = Notebook.query.get(id)
     if oneNotebook is None:
         return jsonify({'error': 'Notebook not found'}),404

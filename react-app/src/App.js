@@ -6,6 +6,9 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage/LandingPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute"
+import Notebooks from "./components/Notebooks/Notebooks"
+import NotebookDetails from "./components/Notebooks/NotebookDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,20 +19,30 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
+      {/* <Navigation isLoaded={isLoaded} />
+      {isLoaded && ( */}
         <Switch>
           <Route path="/" exact={true}>
             <LandingPage/>
           </Route>
+
           {/* <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route> */}
+          <ProtectedRoute path="/home" exact={true}>
+              <Navigation />
+          </ProtectedRoute>
+          <ProtectedRoute path='/notebooks' exact={true}>
+            <Notebooks />
+          </ProtectedRoute>
+          <Route path='/notebooks/:notebookId' exact={true}>
+            <NotebookDetails />
+          </Route>
         </Switch>
-      )}
+      {/* )} */}
     </>
   );
 }

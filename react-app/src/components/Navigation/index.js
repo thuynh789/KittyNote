@@ -2,17 +2,16 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import DemoUser from '../auth/DemoUser';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation(){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
 		<ul>
-			<div >
-              <DemoUser />
-            </div>
+			<div>
+				Hi {sessionUser?.username} !
+			</div>
 			<div>
           		<NavLink className="navlink" to="/notebooks">
               	Notebooks
@@ -24,13 +23,13 @@ function Navigation({ isLoaded }){
           		</NavLink>
        		</div>
 			<li>
-				<NavLink exact to="/">Home</NavLink>
+				<NavLink exact to="/home">Home</NavLink>
 			</li>
-			{isLoaded && (
+			{/* {isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />
 				</li>
-			)}
+			)} */}
 		</ul>
 	);
 }
