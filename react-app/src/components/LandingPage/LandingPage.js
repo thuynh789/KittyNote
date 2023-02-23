@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { login } from "../../store/session";
 import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "./SignupFormModal";
+import OpenModalButton from "./OpenModalButton";
+import LoginFormModal from "./LoginFormModal/index";
+import SignupFormModal from "./SignupFormModal/index";
+import DemoUser from "../auth/DemoUser";
+import "./LandingPage.css"
 
 export default function LandingPage() {
   return (
@@ -30,6 +32,9 @@ export default function LandingPage() {
           modalComponent={<SignupFormModal />}
         />
       </div>
+        <div className="splash" >
+            <DemoUser />
+        </div>
 
       <footer className="splash-footer">
         <div className="leftside-footer">Evernote clone by Tiana Huynh</div>

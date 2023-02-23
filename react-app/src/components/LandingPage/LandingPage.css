@@ -1,1 +1,9 @@
+html, body {
+    height: 100%;
+}
 
+body {
+    background-image:url('../Images/cat-login.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
