@@ -8,7 +8,7 @@ import SignupFormModal from "./SignupFormModal/index";
 import DemoUser from "../auth/DemoUser";
 import "./LandingPage.css"
 import logo from "../Images/logo.png"
-import outline from "../Images/outline.png"
+import outline from "../Images/other.png"
 
 export default function LandingPage() {
   return (
