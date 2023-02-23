@@ -56,8 +56,13 @@ export default function cartReducer(state = initialState, action) {
 
     case GET_USER_NOTEBOOKS: {
       const newState = {}
+      console.log(newState)
       action.payload.forEach(notebook => {
         newState[notebook.id] = notebook
+      })
+      console.log({
+        ...state,
+        allNotebooks: newState
       })
       return {
         ...state,
