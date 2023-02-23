@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute"
+import Notebooks from "./components/Notebooks/Notebooks"
 
 function App() {
   const dispatch = useDispatch();
@@ -31,9 +32,10 @@ function App() {
             <SignupFormPage />
           </Route> */}
           <ProtectedRoute path="/home" exact={true}>
-            <div id="main-components-container">
               <Navigation />
-            </div>
+          </ProtectedRoute>
+          <ProtectedRoute path='/notebooks' exact={true}>
+            <Notebooks />
           </ProtectedRoute>
         </Switch>
       {/* )} */}

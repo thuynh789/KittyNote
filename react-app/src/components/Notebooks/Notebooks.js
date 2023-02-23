@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserNotebooks_thunk } from "../../store/note";
+import { getUserNotebooks_thunk } from "../../store/notebooks";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function allNotebooks() {
+export default function Notebooks() {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const notebooks = useSelector((state) =>state.notebooks.allNotebooks);
+    console.log(notebooks)
 
     useEffect(() => {
         dispatch(getUserNotebooks_thunk());
@@ -15,7 +17,14 @@ export default function allNotebooks() {
 
     return (
         <div className = "notebook-container">
-            {notebooks}
+            <h1>Notebooks</h1>
+            <li>
+                {Object.values(notebooks).map((notebook) => (
+					<li key={notebook.id}>
+						<Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
+					</li>
+				))}
+            </li>
         </div>
     )
 }
