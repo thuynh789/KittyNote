@@ -3,7 +3,72 @@ html, body {
 }
 
 body {
-    background-image:url('../Images/cat-login.jpeg');
+    background-image:url('../Images/paper.png');
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.splash-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.splash-logo img{
+    width: 125%;
+    padding-left: 0em;
+    margin-top: 7em;
+}
+
+
+
+.splash {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 5em;
+    border-left: 0em;
+  }
+
+.buttons {
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+.footer{
+    font-size: x-large;
+}
+
+.rightside-footer{
+    font-size: large;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button1, .button2, .button3, .footers {
+    padding-top: 6em;
+}
+
+.button1, .button2, .button3 {
+    display: flex;
+    justify-content: center;
+}
+
+.button1 button, .button2 button, .button3 button {
+    height: 60px;
+    width: 170px;
+    border-radius: 25px;
+    font-size: larger;
+    text-transform: uppercase;
 }
