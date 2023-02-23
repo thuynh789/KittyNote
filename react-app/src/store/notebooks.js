@@ -36,8 +36,10 @@ export const deleteNotebook_AC= (notebookId) => ({
 
 export const getUserNotebooks_thunk = () => async (dispatch) => {
   const res = await fetch('/api/notebooks/')
+  // console.log(res)
   if (res.ok) {
       const data = await res.json()
+      // console.log(data)
       dispatch(getUserNotebooks_AC(data.Notebooks))
       return data
   }
@@ -48,6 +50,7 @@ export const getOneNotebook_thunk= (notebookId) => async (dispatch) => {
   const res = await fetch(`/api/notebooks/${notebookId}`);
   if (res.ok) {
     const data = await res.json();
+    console.log(data)
     dispatch(getOneNotebook_AC(data.Notebook));
     return data;
   }
@@ -64,19 +67,21 @@ export default function cartReducer(state = initialState, action) {
   switch (action.type) {
 
     case GET_USER_NOTEBOOKS: {
-      const newState = {}
+      const newState = { allNotebooks: {}, singleNotebook: {}}
       action.payload.forEach(notebook => {
-        newState[notebook.id] = notebook
+        newState.allNotebooks[notebook.id] = notebook
       })
-      return {
-        ...state,
-        allNotebooks: newState
-      }
+      return newState
+      // return {
+      //   ...state,
+      //   allNotebooks: newState
+      // }
     }
 
     case ONE_NOTEBOOK: {
       const newState = {...state, singleNotebook: {}}
       newState.singleNotebook = action.payload
+      console.log(newState)
       return newState
     }
 

@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute"
 import Notebooks from "./components/Notebooks/Notebooks"
+import NotebookDetails from "./components/Notebooks/NotebookDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
           <ProtectedRoute path='/notebooks' exact={true}>
             <Notebooks />
           </ProtectedRoute>
+          <Route path='/notebooks/:notebookId' exact={true}>
+            <NotebookDetails />
+          </Route>
         </Switch>
       {/* )} */}
     </>
