@@ -29,11 +29,11 @@ export default function NotebookDetails(){
             </div>
             <div classNAme='note-page'>
                 {myNotebook.created_at}
-                {Object.values(myNotes).map((note) => (
-					<li key={note.id}>
-						<p>{note.content}</p>
-					</li>
-				))}
+                <ul>
+                {myNotes?.map(note => (
+                    <li key={note.content}>{note.title}: {note.content}</li>
+                ))}
+                </ul>
             </div>
 
 
