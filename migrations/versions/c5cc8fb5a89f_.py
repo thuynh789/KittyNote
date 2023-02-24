@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 6eec43a43950
+Revision ID: c5cc8fb5a89f
 Revises:
-Create Date: 2023-02-21 21:27:52.517159
+Create Date: 2023-02-23 20:57:47.713177
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '6eec43a43950'
+revision = 'c5cc8fb5a89f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -56,6 +56,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE scratchpads SET SCHEMA {SCHEMA};")
+
 
     op.create_table('tasks',
     sa.Column('id', sa.Integer(), nullable=False),
