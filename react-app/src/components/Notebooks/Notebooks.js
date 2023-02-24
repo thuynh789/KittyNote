@@ -18,13 +18,11 @@ export default function Notebooks() {
     return (
         <div className = "notebook-container">
             <h1>Notebooks</h1>
-            <li>
                 {Object.values(notebooks).map((notebook) => (
 					<li key={notebook.id}>
 						<Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
 					</li>
 				))}
-            </li>
         </div>
     )
 }

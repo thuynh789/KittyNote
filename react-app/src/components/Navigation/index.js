@@ -8,7 +8,7 @@ function Navigation(){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul>
+		<ul className='navbar'>
 			<div>
 				Hi {sessionUser?.username} !
 			</div>

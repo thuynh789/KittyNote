@@ -5,14 +5,16 @@ import { useParams } from "react-router-dom";
 
 export default function NotebookDetails(){
     const myNotebook = useSelector(state => state.notebooks.singleNotebook)
+    const myNotes = useSelector(state => state.notebooks.singleNotebook.notes)
     console.log(myNotebook)
+    console.log(myNotes)
     const dispatch = useDispatch();
     const {notebookId} = useParams();
 
 
     useEffect(()=>{
         dispatch(getOneNotebook_thunk(notebookId))
-    },[dispatch,notebookId])
+    },[dispatch])
 
     // useEffect(()=>{
     //     dispatch(getNoteThunk(noteId))
@@ -27,12 +29,13 @@ export default function NotebookDetails(){
             </div>
             <div classNAme='note-page'>
                 {myNotebook.created_at}
-                {/* {myNotebook.notes.forEach(note => {
-                    <li>
-                        {note.content}
-                    </li>
-                })} */}
+                {Object.values(myNotes).map((note) => (
+					<li key={note.id}>
+						<p>{note.content}</p>
+					</li>
+				))}
             </div>
+
 
 
 

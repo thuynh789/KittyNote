@@ -20,8 +20,8 @@ function App() {
 
   return (
     <>
-      {/* <Navigation isLoaded={isLoaded} />
-      {isLoaded && ( */}
+      {/* <Navigation isLoaded={isLoaded} /> */}
+      {isLoaded && (
         <Switch>
           <Route path="/" exact={true}>
             <LandingPage/>
@@ -34,10 +34,10 @@ function App() {
             <SignupFormPage />
           </Route> */}
           <ProtectedRoute path="/home" exact={true}>
-              <Navigation />
+            <Navigation />
           </ProtectedRoute>
           <ProtectedRoute path='/notebooks' exact={true}>
-          <Navigation />
+            <Navigation />
             <Notebooks />
           </ProtectedRoute>
           <ProtectedRoute path='/notebooks/:notebookId' exact={true}>
@@ -45,7 +45,7 @@ function App() {
             <NotebookDetails />
           </ProtectedRoute>
         </Switch>
-      {/* )} */}
+      )}
     </>
   );
 }
