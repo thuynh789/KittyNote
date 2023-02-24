@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUserNotebooks_thunk } from "../../store/notebooks";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "./Notebooks.css"
 
 export default function Notebooks() {
     const dispatch = useDispatch();
