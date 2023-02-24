@@ -3,12 +3,17 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from './logout';
 import './Navigation.css';
+import logo from "../Images/KITTYNOTE.png"
 
 function Navigation(){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
+		<div className='nav-wrapper'>
 		<ul className='navbar'>
+			<div className='logo'>
+				<img src={logo} alt='logo' />
+			</div>
 			<div>
 				Hi {sessionUser?.username} !
 			</div>
@@ -22,13 +27,14 @@ function Navigation(){
        		</div>
 			<div>
           		<NavLink className="navlink" to="/notes">
-              	Note
+              	Notes
           		</NavLink>
        		</div>
 			<div>
 				<LogoutButton/>
 			</div>
 		</ul>
+		</div>
 	);
 }
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneNotebook_thunk } from "../../store/notebooks";
 import { useParams } from "react-router-dom";
+import "./Notebooks.css"
 
 export default function NotebookDetails(){
     const myNotebook = useSelector(state => state.notebooks.singleNotebook)
@@ -23,7 +24,7 @@ export default function NotebookDetails(){
     console.log(myNotebook.notes)
 
     return (
-        <div className='single-notebook'>
+        <div className='notebook-container'>
             <div className='single-notebook-header'>
                 <h1>{myNotebook.title}</h1>
             </div>

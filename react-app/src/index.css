@@ -3,3 +3,7 @@
 * {
     font-family: 'Nanum Pen Script', cursive;
 }
+
+#root{
+    display: flex;
+}
