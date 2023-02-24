@@ -7,8 +7,8 @@ import "./Notebooks.css"
 export default function NotebookDetails(){
     const myNotebook = useSelector(state => state.notebooks.singleNotebook)
     const myNotes = useSelector(state => state.notebooks.singleNotebook.notes)
-    console.log(myNotebook)
-    console.log(myNotes)
+    // console.log(myNotebook)
+    // console.log(myNotes)
     const dispatch = useDispatch();
     const {notebookId} = useParams();
 
@@ -21,7 +21,7 @@ export default function NotebookDetails(){
     //     dispatch(getNoteThunk(noteId))
     // },[dispatch,noteId])
 
-    console.log(myNotebook.notes)
+    // console.log(myNotebook.notes)
 
     return (
         <div className='notebook-container'>

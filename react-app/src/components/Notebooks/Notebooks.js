@@ -10,7 +10,7 @@ export default function Notebooks() {
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const notebooks = useSelector((state) =>state.notebooks.allNotebooks);
-    console.log(notebooks)
+    // console.log(notebooks)
 
     useEffect(() => {
         dispatch(getUserNotebooks_thunk());
