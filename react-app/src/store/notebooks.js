@@ -74,6 +74,20 @@ export const createNotebook_thunk= (notebook) => async (dispatch) => {
   return res
 }
 
+export const updateNotebook_thunk= (notebook) => async (dispatch) => {
+  const res = await fetch(`/api/notebooks/${notebook.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify(notebook),
+  })
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(updateNotebook_AC(data));
+    return data;
+  }
+  return res
+}
+
 
 
 // REDUCER
@@ -108,7 +122,12 @@ export default function cartReducer(state = initialState, action) {
     case CREATE_NOTEBOOK: {
       const newState = {...state, singleNotebook: {}}
       newState.allNotebooks[action.payload.id] = action.payload
-      // console.log(newState)
+      return newState
+    }
+
+    case UPDATE_NOTEBOOK: {
+      const newState = {...state, singleNotebook: {}}
+      newState.allNotebooks[action.payload.id] = action.payload
       return newState
     }
 
