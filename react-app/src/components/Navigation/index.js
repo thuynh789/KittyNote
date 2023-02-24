@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+import LogoutButton from './logout';
 import './Navigation.css';
 
 function Navigation(){
@@ -13,6 +13,9 @@ function Navigation(){
 				Hi {sessionUser?.username} !
 			</div>
 			<div>
+				<NavLink exact to="/home">Home</NavLink>
+			</div>
+			<div>
           		<NavLink className="navlink" to="/notebooks">
               	Notebooks
           		</NavLink>
@@ -22,14 +25,9 @@ function Navigation(){
               	Note
           		</NavLink>
        		</div>
-			<li>
-				<NavLink exact to="/home">Home</NavLink>
-			</li>
-			{/* {isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
-			)} */}
+			<div>
+				<LogoutButton/>
+			</div>
 		</ul>
 	);
 }
