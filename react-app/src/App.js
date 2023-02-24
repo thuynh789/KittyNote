@@ -13,6 +13,7 @@ import NotebookDetails from "./components/Notebooks/NotebookDetails";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -36,11 +37,13 @@ function App() {
               <Navigation />
           </ProtectedRoute>
           <ProtectedRoute path='/notebooks' exact={true}>
+          <Navigation />
             <Notebooks />
           </ProtectedRoute>
-          <Route path='/notebooks/:notebookId' exact={true}>
+          <ProtectedRoute path='/notebooks/:notebookId' exact={true}>
+            <Navigation />
             <NotebookDetails />
-          </Route>
+          </ProtectedRoute>
         </Switch>
       {/* )} */}
     </>
