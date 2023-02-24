@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createNotebook_thunk } from '../../store/notebooks';
+import { createNotebook_thunk, getUserNotebooks_thunk } from '../../store/notebooks';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
 
@@ -8,6 +8,7 @@ import { useModal } from '../../context/Modal';
 export default function CreateNotebookForm() {
     const dispatch = useDispatch();
     const history = useHistory();
+    // const user = useSelector((state) => state.session.user);
 
 
     const [title, setTitle] = useState('');
@@ -18,19 +19,20 @@ export default function CreateNotebookForm() {
 
     useEffect(() => {
         const errors = [];
-        if (title.length < 1) errors.push('Name must be at least 1 characters long');
+        if (title.length < 1) errors.push('Name must be at least 1 character');
         setErrors(errors);
     }, [title])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const payload = {
+        const notebook = {
             title
         }
-        await dispatch(createNotebook_thunk(payload))
-            .then(() => {
-                closeModal()
-            })
+        dispatch(createNotebook_thunk(notebook))
+            .then(() => dispatch(getUserNotebooks_thunk()))
+            .then(() => history.push(`/notebooks`))
+            .then(closeModal)
+
     };
 
     return (

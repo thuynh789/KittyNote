@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUserNotebooks_thunk, createNotebook_thunk } from "../../store/notebooks";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import OpenModalButton from "../LandingPage/OpenModalButton";
+import CreateNotebookForm from "./CreateNotebookForm";
+
 import "./Notebooks.css"
 
 export default function Notebooks() {
@@ -24,6 +27,13 @@ export default function Notebooks() {
 						<Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
 					</li>
 				))}
+            <div className="create-nb">
+                <OpenModalButton
+                className = 'button-in'
+                buttonText="New Notebook"
+                modalComponent={<CreateNotebookForm />}
+                />
+            </div>
         </div>
     )
 }
