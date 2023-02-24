@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserNotebooks_thunk } from "../../store/notebooks";
+import { getUserNotebooks_thunk, createNotebook_thunk } from "../../store/notebooks";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Notebooks.css"
