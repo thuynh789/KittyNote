@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import OpenModalButton from "../LandingPage/OpenModalButton";
 import CreateNotebookForm from "./CreateNotebookForm";
+import EditNotebookForm from "./EditNotebookForm";
 
 import "./Notebooks.css"
 
@@ -22,11 +23,7 @@ export default function Notebooks() {
     return (
         <div className = "notebook-container">
             <h1>Notebooks</h1>
-                {Object.values(notebooks).map((notebook) => (
-					<li key={notebook.id}>
-						<Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
-					</li>
-				))}
+
             <div className="create-nb">
                 <OpenModalButton
                 className = 'button-in'
@@ -34,6 +31,18 @@ export default function Notebooks() {
                 modalComponent={<CreateNotebookForm />}
                 />
             </div>
+
+                {Object.values(notebooks).map((notebook) => (
+					<li key={notebook.id}>
+						<Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
+    
+                        <OpenModalButton
+                            modalComponent={<EditNotebookForm myNotebook={notebook} />}
+                            // className="fa-solid fa-pen-to-square"
+                            buttonText='Rename'
+                        />
+					</li>
+				))}
         </div>
     )
 }
