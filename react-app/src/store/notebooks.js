@@ -48,6 +48,7 @@ export const getUserNotebooks_thunk = () => async (dispatch) => {
 
 export const getOneNotebook_thunk= (notebookId) => async (dispatch) => {
   const res = await fetch(`/api/notebooks/${notebookId}`);
+  console.log(res)
   if (res.ok) {
     const data = await res.json();
     console.log(data)
