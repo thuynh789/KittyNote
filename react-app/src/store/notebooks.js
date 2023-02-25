@@ -88,6 +88,18 @@ export const updateNotebook_thunk= (notebook) => async (dispatch) => {
   return res
 }
 
+export const deleteNotebook_thunk= (notebookId) => async (dispatch) => {
+  const res = await fetch(`/api/notebooks/${notebookId}`, {
+    method: 'DELETE',
+  })
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(deleteNotebook_AC(notebookId));
+    return data;
+  }
+  return res
+}
+
 
 
 // REDUCER
@@ -131,10 +143,11 @@ export default function cartReducer(state = initialState, action) {
       return newState
     }
 
-
-
-
-
+    case DELETE_NOTEBOOK: {
+      const newState = {...state, singleNotebook: {}}
+      delete newState.allNotebooks[action.payload]
+      return newState
+    }
 
     default:
       return state
