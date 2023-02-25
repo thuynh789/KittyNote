@@ -6,6 +6,8 @@
     font-size: larger;
     width: 50%;
     background-color: aliceblue;
+    background-image: url('../Images/cat-back.png');
+    background-size: contain;
 }
 .sub-header{
     display: flex;
