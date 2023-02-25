@@ -8,6 +8,8 @@
     background-color: aliceblue;
     background-image: url('../Images/cat-back.png');
     background-size: contain;
+    border-radius: 1em;
+    border: dotted darkgrey
 }
 .sub-header{
     display: flex;
