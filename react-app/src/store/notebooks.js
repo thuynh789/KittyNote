@@ -48,15 +48,59 @@ export const getUserNotebooks_thunk = () => async (dispatch) => {
 
 export const getOneNotebook_thunk= (notebookId) => async (dispatch) => {
   const res = await fetch(`/api/notebooks/${notebookId}`);
-  console.log(res)
+  // console.log(res)
   if (res.ok) {
     const data = await res.json();
-    console.log(data)
+    // console.log(data)
     dispatch(getOneNotebook_AC(data.Notebook));
     return data;
   }
   return res
 }
+
+export const createNotebook_thunk= (notebook) => async (dispatch) => {
+  const res = await fetch(`/api/notebooks/`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify(notebook),
+  })
+  // console.log(res)
+  if (res.ok) {
+    const data = await res.json();
+    // console.log(data)
+    dispatch(createNotebook_AC(data));
+    return data;
+  }
+  return res
+}
+
+export const updateNotebook_thunk= (notebook) => async (dispatch) => {
+  const res = await fetch(`/api/notebooks/${notebook.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify(notebook),
+  })
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(updateNotebook_AC(data));
+    return data;
+  }
+  return res
+}
+
+export const deleteNotebook_thunk= (notebookId) => async (dispatch) => {
+  const res = await fetch(`/api/notebooks/${notebookId}`, {
+    method: 'DELETE',
+  })
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(deleteNotebook_AC(notebookId));
+    return data;
+  }
+  return res
+}
+
+
 
 // REDUCER
 const initialState = {
@@ -81,13 +125,29 @@ export default function cartReducer(state = initialState, action) {
 
     case ONE_NOTEBOOK: {
       const newState = {...state, singleNotebook: {}}
+      // console.log(newState)
       newState.singleNotebook = action.payload
-      console.log(newState)
+      // console.log(newState)
       return newState
     }
 
+    case CREATE_NOTEBOOK: {
+      const newState = {...state, singleNotebook: {}}
+      newState.allNotebooks[action.payload.id] = action.payload
+      return newState
+    }
 
+    case UPDATE_NOTEBOOK: {
+      const newState = {...state, singleNotebook: {}}
+      newState.allNotebooks[action.payload.id] = action.payload
+      return newState
+    }
 
+    case DELETE_NOTEBOOK: {
+      const newState = {...state, singleNotebook: {}}
+      delete newState.allNotebooks[action.payload]
+      return newState
+    }
 
     default:
       return state

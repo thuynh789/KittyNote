@@ -46,10 +46,11 @@ def get_one_notebook(id):
 def create_notebook():
     form = NotebookForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    data = form.data
 
     if form.validate_on_submit():
         notebook = Notebook(
-            title=form.data['title'],
+            title=data['title'],
             userId=current_user.id,
         )
         db.session.add(notebook)

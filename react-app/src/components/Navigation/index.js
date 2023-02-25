@@ -12,7 +12,9 @@ function Navigation(){
 		<div className='nav-wrapper'>
 		<ul className='navbar'>
 			<div className='logo'>
-				<img src={logo} alt='logo' />
+				<NavLink exact to="/home">
+					<img src={logo} alt='logo' />
+				</NavLink>
 			</div>
 			<div>
 				Hi {sessionUser?.username} !
