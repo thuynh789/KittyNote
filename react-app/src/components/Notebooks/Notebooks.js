@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import OpenModalButton from "../LandingPage/OpenModalButton";
 import CreateNotebookForm from "./CreateNotebookForm";
 import EditNotebookForm from "./EditNotebookForm";
-
+import DeleteNotebookForm from "./DeleteNotebookForm";
 import "./Notebooks.css"
 
 export default function Notebooks() {
@@ -65,6 +65,11 @@ export default function Notebooks() {
                                             modalComponent={<EditNotebookForm myNotebook={notebook} />}
                                             // className="fa-solid fa-pen-to-square"
                                             buttonText='Rename'
+                                        />
+                                        <OpenModalButton
+                                            modalComponent={<DeleteNotebookForm notebookId={notebook.id}/>}
+                                            // className="fa-solid fa-pen-to-square"
+                                            buttonText='Delete'
                                         />
                                     </td>
                                 </tr>
