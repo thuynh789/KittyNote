@@ -1,34 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createNotebook_thunk, getUserNotebooks_thunk } from '../../store/notebooks';
+import { getUserNotebooks_thunk, deleteNotebook_thunk } from '../../store/notebooks';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
 
 
-export default function CreateNotebookForm() {
+export default function DeleteNotebookForm({notebookId}) {
     const dispatch = useDispatch();
     const history = useHistory();
     // const user = useSelector((state) => state.session.user);
-
-
-    const [title, setTitle] = useState('');
-    const enterTitle = (e) => setTitle(e.target.value);
-
-    const [errors, setErrors] = useState([]);
     const {closeModal} = useModal()
+    const [errors, setErrors] = useState([]);
 
-    useEffect(() => {
-        const errors = [];
-        if (title.length < 1) errors.push('Name must be at least 1 character');
-        setErrors(errors);
-    }, [title])
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const notebook = {
-            title
-        }
-        dispatch(createNotebook_thunk(notebook))
+        setErrors([]);
+
+        dispatch(deleteNotebook_thunk(notebookId))
             .then(() => dispatch(getUserNotebooks_thunk()))
             .then(() => history.push(`/notebooks`))
             .then(closeModal)
@@ -38,13 +28,13 @@ export default function CreateNotebookForm() {
     return (
         <div>
             <div className="form-header">
-                <h1>New Notebook</h1>
+                <h1>Delete notebook?</h1>
+                <p>(This is permanent and cannot be undone.)</p>
             </div>
-
-            <section className='form-container'>
-                <ul>{errors.map((error) => (
-                    <li key={error}>{error}</li>
-                ))}</ul>
+            <form onSubmit={handleSubmit}>
+              <button className="form-button" type="submit">Confirm Delete</button>
+            </form>
+{/*
                 <form className='form-body' onSubmit={handleSubmit}>
                     <label>Name </label>
                     <input className='notebook-form-input'
@@ -57,8 +47,8 @@ export default function CreateNotebookForm() {
                         className='button form-button'
                         type="submit"
                     >Submit</button>
-                </form>
-            </section>
+                </form> */}
+
         </div>
     )
 }
