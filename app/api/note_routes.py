@@ -32,54 +32,57 @@ def get_one_note(id):
     return jsonify({ 'Note': note })
 
 
-# #CREATE NOTEBOOK
-# @notebook_routes.route("/", methods=['POST'])
-# @login_required
-# def create_notebook():
-#     form = NotebookForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     data = form.data
+#CREATE NOTEBOOK
+@note_routes.route("/", methods=['POST'])
+@login_required
+def create_note():
+    form = NoteForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    data = form.data
 
-#     if form.validate_on_submit():
-#         notebook = Notebook(
-#             title=data['title'],
-#             userId=current_user.id,
-#         )
-#         db.session.add(notebook)
-#         db.session.commit()
-#         return notebook.to_dict()
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-
-
-
-# #UPDATE/EDIT NOTEBOOK
-# @notebook_routes.route("/<int:id>", methods=['PUT'])
-# @login_required
-# def update_notebook(id):
-#     notebook = Notebook.query.get(id)
-#     if notebook is None:
-#         return jsonify({'error': 'Notebook not found'}),404
-#     if current_user.id != notebook.userId:
-#         return jsonify({'error': 'Unauthorized'}), 401
-
-#     form = NotebookForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         notebook.title = form.data['title']
-#         db.session.commit()
-#         return notebook.to_dict()
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    if form.validate_on_submit():
+        note = Note(
+            title=data['title'],
+            content = data['content'],
+            userId=current_user.id,
+            notebookId = data['notebookId']
+        )
+        db.session.add(note)
+        db.session.commit()
+        return note.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-# #DELETE NOTEBOOK
-# @notebook_routes.route("/<int:id>", methods=['DELETE'])
-# @login_required
-# def delete_notebook(id):
-#     notebook = Notebook.query.get(id)
-#     if notebook is None:
-#         return jsonify({'error': 'Notebook not found'}),404
-#     if current_user.id != notebook.userId:
-#         return jsonify({'error': 'Unauthorized'}), 401
-#     db.session.delete(notebook)
-#     db.session.commit()
-#     return jsonify({"message": "Notebook deleted"}), 200
+
+#UPDATE/EDIT NOTEBOOK
+@note_routes.route("/<int:id>", methods=['PUT'])
+@login_required
+def update_note(id):
+    note = Note.query.get(id)
+    if note is None:
+        return jsonify({'error': 'Note not found'}),404
+    if current_user.id != note.userId:
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    form = NoteForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        note.title = form.data['title']
+        note.content = form.data['content']
+        db.session.commit()
+        return note.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+#DELETE NOTEBOOK
+@note_routes.route("/<int:id>", methods=['DELETE'])
+@login_required
+def delete_note(id):
+    note = Note.query.get(id)
+    if note is None:
+        return jsonify({'error': 'Note not found'}),404
+    if current_user.id != note.userId:
+        return jsonify({'error': 'Unauthorized'}), 401
+    db.session.delete(note)
+    db.session.commit()
+    return jsonify({"message": "Note deleted"}), 200
