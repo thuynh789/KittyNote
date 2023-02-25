@@ -1,8 +1,6 @@
 .notebook-container{
     margin: 3rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    padding-top: 6rem;
+    padding: 4rem;
     font-size: larger;
     width: 50%;
     background-color: aliceblue;

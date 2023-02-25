@@ -10,7 +10,6 @@
 .nav-wrapper{
   background-image: url('../Images/nav-background.png');
   background-color: #8d95a3;
-  height: 100vh;
   width: 30%;
   font-size: x-large;
   display: flex;
@@ -20,11 +19,19 @@
 
 .navbar{
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   padding-left: 0px;
+  font-size: xx-large;
 }
 
-/* .logo{
-  margin-left: 1rem;
-} */
+.logout-button{
+  font-size: x-large;
+  margin-top: 5rem;
+}
+
+.nav1, .nav2, .nav3, .nav4{
+  margin-top: 2rem;
+}
+
