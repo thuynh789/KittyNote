@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserNotebooks_thunk, createNotebook_thunk } from "../../store/notebooks";
 import { useHistory } from "react-router-dom";
@@ -22,27 +22,58 @@ export default function Notebooks() {
 
     return (
         <div className = "notebook-container">
-            <h1>Notebooks</h1>
 
-            <div className="create-nb">
-                <OpenModalButton
-                className = 'button-in'
-                buttonText="New Notebook"
-                modalComponent={<CreateNotebookForm />}
-                />
+            <div className="header">
+                <h1>Notebooks</h1>
             </div>
 
-                {Object.values(notebooks).map((notebook) => (
-					<li key={notebook.id}>
-						<Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
-    
+            <div className="page-content">
+                <div className="sub-header">
+                    <div>{Object.values(notebooks).length}  Notebooks</div>
+                    <div className="create-nb">
                         <OpenModalButton
-                            modalComponent={<EditNotebookForm myNotebook={notebook} />}
-                            // className="fa-solid fa-pen-to-square"
-                            buttonText='Rename'
+                        className = 'button-in'
+                        buttonText="New Notebook"
+                        modalComponent={<CreateNotebookForm />}
                         />
-					</li>
-				))}
+                    </div>
+                </div>
+
+                <hr style={{ width: "100%" }} />
+
+                <div className="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>TITLE</th>
+                                <th>CREATED BY</th>
+                                <th>UPDATED </th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {Object.values(notebooks).map((notebook) => (
+                                <React.Fragment key={notebook.id}>
+                                <tr>
+                                    <td>
+                                        <Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
+                                    </td>
+                                    <td>{user.username}</td>
+                                    <td>{notebook.updated_at}</td>
+                                    <td>
+                                        <OpenModalButton
+                                            modalComponent={<EditNotebookForm myNotebook={notebook} />}
+                                            // className="fa-solid fa-pen-to-square"
+                                            buttonText='Rename'
+                                        />
+                                    </td>
+                                </tr>
+                                </React.Fragment>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     )
 }
