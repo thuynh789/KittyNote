@@ -17,8 +17,7 @@ def get_user_notes():
     print(allNotes)
     return jsonify({"Notes": [note.to_dict() for note in allNotes]})
 
-
-# GET ONE NOTEBOOK
+# GET ONE NOTE
 @note_routes.route("/<int:id>")
 @login_required
 def get_one_note(id):
@@ -32,7 +31,7 @@ def get_one_note(id):
     return jsonify({ 'Note': note })
 
 
-#CREATE NOTEBOOK
+#CREATE NOTE
 @note_routes.route("/", methods=['POST'])
 @login_required
 def create_note():
@@ -54,7 +53,7 @@ def create_note():
 
 
 
-#UPDATE/EDIT NOTEBOOK
+#UPDATE/EDIT NOTE
 @note_routes.route("/<int:id>", methods=['PUT'])
 @login_required
 def update_note(id):
@@ -74,7 +73,7 @@ def update_note(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-#DELETE NOTEBOOK
+#DELETE NOTE
 @note_routes.route("/<int:id>", methods=['DELETE'])
 @login_required
 def delete_note(id):

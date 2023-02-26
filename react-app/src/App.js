@@ -35,6 +35,7 @@ function App() {
           </Route> */}
           <ProtectedRoute path="/home" exact={true}>
             <Navigation />
+            <Notebooks />
           </ProtectedRoute>
           <ProtectedRoute path='/notebooks' exact={true}>
             <Navigation />
