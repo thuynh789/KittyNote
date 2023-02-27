@@ -108,7 +108,7 @@ const initialState = {
   singleNotebook: {}
 };
 
-export default function cartReducer(state = initialState, action) {
+export default function notebookReducer(state = initialState, action) {
   switch (action.type) {
 
     case GET_USER_NOTEBOOKS: {

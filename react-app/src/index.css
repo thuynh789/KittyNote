@@ -6,4 +6,9 @@
 
 #root{
     display: flex;
+    height: 100%;
+}
+
+body{
+    margin: 0vh;
 }
