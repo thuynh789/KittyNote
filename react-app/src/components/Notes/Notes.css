@@ -4,13 +4,23 @@
     overflow-y: scroll;
 }
 
-.note-card{
-    border: solid darkgray;
-    text-align: center;
-    padding-bottom: 1rem;
-}
-
-
 .header{
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.note-card{
+    border-top: solid darkgray;
+    border-right: solid darkgrey;
+    text-align: left;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    word-break: break-word;
+}
+
+.note-card:hover {
+    background-color: aliceblue;
+    cursor: pointer;
 }

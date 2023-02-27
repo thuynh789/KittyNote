@@ -4,6 +4,8 @@ import { getOneNote_thunk, updateNote_thunk, getUserNotes_thunk } from "../../st
 import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
+import OpenModalButton from "../LandingPage/OpenModalButton";
+import DeleteNoteForm from "./DeleteNoteForm";
 import "./NoteDetails.css"
 
 export default function NoteDetails(){
@@ -38,9 +40,8 @@ export default function NoteDetails(){
         }
         dispatch(updateNote_thunk(editedNote))
             .then(() => dispatch(getOneNote_thunk(myNote.id)))
-            .then(() => dispatch(getUserNotes_thunk()))
             .then(() => history.push(`/notes/${myNote.id}`))
-            .then(closeModal)
+            .then(() => dispatch(getUserNotes_thunk()))
 
     };
 
@@ -48,6 +49,10 @@ export default function NoteDetails(){
         <div className='notebook-container'>
             <div className='note-header'>
                 <button onClick={handleEdit}>Save</button>
+                    <OpenModalButton
+                        modalComponent={<DeleteNoteForm noteId={myNote.id}/>}
+                        buttonText='Delete'
+                    />
             </div>
             <div classNAme='note-page'>
                 <div className="note-title">

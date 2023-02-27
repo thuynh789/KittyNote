@@ -8,6 +8,7 @@
     font-size: xx-large;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    overflow-x: scroll;
 }
 
 .note-content{

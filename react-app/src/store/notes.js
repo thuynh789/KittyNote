@@ -135,6 +135,7 @@ export default function noteReducer(state = initialState, action) {
 
     case UPDATE_NOTE: {
       const newState = {...state, singleNote: {}}
+      console.log(newState)
       newState.allNotes[action.payload.id] = action.payload
       return newState
     }
