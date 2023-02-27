@@ -38,10 +38,6 @@ function App() {
             <Navigation />
             <Notebooks />
           </ProtectedRoute>
-          <ProtectedRoute path='/notes' exact={true}>
-            <Navigation />
-            <Notes />
-          </ProtectedRoute>
           <ProtectedRoute path='/notebooks' exact={true}>
             <Navigation />
             <Notebooks />
@@ -49,6 +45,14 @@ function App() {
           <ProtectedRoute path='/notebooks/:notebookId' exact={true}>
             <Navigation />
             <NotebookDetails />
+          </ProtectedRoute>
+          <ProtectedRoute path='/notes' exact={true}>
+            <Navigation />
+            <Notes />
+          </ProtectedRoute>
+          <ProtectedRoute path='/notes/:noteId' exact={true}>
+            <Navigation />
+            <Notes />
           </ProtectedRoute>
         </Switch>
       )}

@@ -1,0 +1,16 @@
+.note-container{
+    width: 20%;
+    background-color: bisque;
+    overflow-y: scroll;
+}
+
+.note-card{
+    border: solid darkgray;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+
+.header{
+    text-align: center;
+}

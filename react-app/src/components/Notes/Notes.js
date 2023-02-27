@@ -4,6 +4,7 @@ import { getUserNotes_thunk, getOneNote_thunk} from "../../store/notes";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import OpenModalButton from "../LandingPage/OpenModalButton";
+import "./Notes.css"
 
 
 export default function Notes() {
@@ -30,9 +31,9 @@ export default function Notes() {
 
         <div className="notes-list">
             {Object.values(notes).map((note) => (
-              <div className='card-container' key={note.id}
+              <div className='note-card' key={note.id}
                 onClick={() => { handleSubmit(note.id) }}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer'}}
               >
                 <div>
                     <h3>{note.title}</h3>
