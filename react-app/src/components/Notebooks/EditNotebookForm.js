@@ -30,8 +30,8 @@ export default function EditNotebookForm({myNotebook}) {
             title
         }
         dispatch(updateNotebook_thunk(notebook))
-            .then(() => dispatch(getUserNotebooks_thunk()))
             .then(() => dispatch(getOneNotebook_thunk(myNotebook.id)))
+            .then(() => dispatch(getUserNotebooks_thunk()))
             .then(() => history.push(`/notebooks`))
             .then(closeModal)
 

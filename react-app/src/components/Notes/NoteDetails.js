@@ -10,10 +10,13 @@ import "./NoteDetails.css"
 
 export default function NoteDetails(){
     const myNotebooks = useSelector(state => state.notebooks.allNotebooks)
-    const myNote = useSelector(state => state.notes.singleNote)
-    console.log(myNote)
-    const dispatch = useDispatch();
     const {noteId} = useParams();
+    console.log(noteId)
+    const myNote = useSelector(state => state.notes.singleNote)
+    // const myNote = useSelector(state => state.notes.allNotes[noteId])
+    console.log(myNote)
+    // console.log(myNote2)
+    const dispatch = useDispatch();
     const history = useHistory();
 
     const [noteContent, setNoteContent] = useState("");
@@ -23,7 +26,7 @@ export default function NoteDetails(){
 
     useEffect(()=>{
         dispatch(getOneNote_thunk(noteId))
-    },[dispatch])
+    },[dispatch, noteId])
 
     useEffect(() => {
 		setNoteTitle(myNote?.title || "");
@@ -33,15 +36,15 @@ export default function NoteDetails(){
     const handleEdit = async (e) => {
         e.preventDefault();
         const editedNote = {
-            id: myNote.id,
             title: noteTitle,
             content: noteContent,
             notebookId: myNote.notebookId
         }
-        dispatch(updateNote_thunk(editedNote))
-            .then(() => dispatch(getOneNote_thunk(myNote.id)))
-            .then(() => history.push(`/notes/${myNote.id}`))
+
+        dispatch(updateNote_thunk(noteId, editedNote))
+            .then(() => dispatch(getOneNote_thunk(noteId)))
             .then(() => dispatch(getUserNotes_thunk()))
+            .then(() => history.push(`/notes/${noteId}`))
 
     };
 
@@ -50,7 +53,7 @@ export default function NoteDetails(){
             <div className='note-header'>
                 <button onClick={handleEdit}>Save</button>
                     <OpenModalButton
-                        modalComponent={<DeleteNoteForm noteId={myNote.id}/>}
+                        modalComponent={<DeleteNoteForm noteId={noteId}/>}
                         buttonText='Delete'
                     />
             </div>
@@ -65,6 +68,7 @@ export default function NoteDetails(){
                 </div>
                 <div className="created">
                     Last edited:
+                    {' '}
                     {myNote.updated_at}
                 </div>
                 <div className="note-content">
@@ -72,7 +76,6 @@ export default function NoteDetails(){
                     className="notes-body"
                     value={noteContent}
                     placeholder="Content"
-                    multiline={true}
                     onChange={(e) => setNoteContent(e.target.value)}
                     ></textarea>
                 </div>

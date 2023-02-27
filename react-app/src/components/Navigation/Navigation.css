@@ -8,6 +8,7 @@
 
 
 .nav-wrapper{
+  border-right: solid #868181;
   background-image: url('../Images/nav-background.png');
   background-color: #8d95a3;
   width: 30%;

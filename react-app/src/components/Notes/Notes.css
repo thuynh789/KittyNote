@@ -13,7 +13,6 @@
 
 .note-card{
     border-top: solid darkgray;
-    border-right: solid darkgrey;
     text-align: left;
     padding-bottom: 1rem;
     padding-left: 1rem;
@@ -24,3 +23,8 @@
     background-color: aliceblue;
     cursor: pointer;
 }
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
