@@ -19,9 +19,9 @@ function Navigation(){
 			<div className='nav1'>
 				Hi {sessionUser?.username} !
 			</div>
-			<div className='nav2'>
+			{/* <div className='nav2'>
 				<NavLink exact to="/home">Home</NavLink>
-			</div>
+			</div> */}
 			<div className='nav3'>
           		<NavLink className="navlink" to="/notebooks">
               	Notebooks
