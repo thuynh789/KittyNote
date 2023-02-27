@@ -19,7 +19,6 @@
 
 .navbar{
   display: flex;
-  height: 100%;
   flex-direction: column;
   align-items: center;
   padding-left: 0px;
@@ -34,4 +33,3 @@
 .nav1, .nav2, .nav3, .nav4{
   margin-top: 2rem;
 }
-

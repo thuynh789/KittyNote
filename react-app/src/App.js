@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute"
 import Notebooks from "./components/Notebooks/Notebooks"
 import NotebookDetails from "./components/Notebooks/NotebookDetails";
 import Notes from "./components/Notes/Notes"
+import NoteDetails from "./components/Notes/NoteDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
           </Route> */}
           <ProtectedRoute path="/home" exact={true}>
             <Navigation />
+            <Notes/>
             <Notebooks />
           </ProtectedRoute>
           <ProtectedRoute path='/notebooks' exact={true}>
@@ -53,6 +55,7 @@ function App() {
           <ProtectedRoute path='/notes/:noteId' exact={true}>
             <Navigation />
             <Notes />
+            <NoteDetails />
           </ProtectedRoute>
         </Switch>
       )}

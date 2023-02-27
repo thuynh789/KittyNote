@@ -4,6 +4,7 @@ import { getUserNotes_thunk, getOneNote_thunk} from "../../store/notes";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import OpenModalButton from "../LandingPage/OpenModalButton";
+import CreateNoteForm from "./CreateNoteForm";
 import "./Notes.css"
 
 
@@ -27,6 +28,13 @@ export default function Notes() {
       <div className="note-container">
         <div className="header">
             <h1>Notes</h1>
+            <div className="create-nb">
+              <OpenModalButton
+              className = 'button-in'
+              buttonText="New Note"
+              modalComponent={<CreateNoteForm />}
+              />
+            </div>
         </div>
 
         <div className="notes-list">

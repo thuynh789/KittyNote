@@ -1,0 +1,22 @@
+.note-header{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.notes-title{
+    width: 99%;
+    font-size: xx-large;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    overflow-x: scroll;
+}
+
+.note-content{
+    height: 50vh;
+    margin-top: 1vh;
+}
+.notes-body{
+    width: 99%;
+    height: 100%;
+    overflow-y: scroll;
+}
