@@ -20,3 +20,20 @@
     height: 100%;
     overflow-y: scroll;
 }
+
+.notes-title{
+    margin-left: 0rem;
+}
+
+.notebookdrop{
+    color: black;
+}
+
+.select2{
+    margin-left: 1vw;
+    font-size: large;
+}
+
+.second button{
+    font-size: medium;
+}

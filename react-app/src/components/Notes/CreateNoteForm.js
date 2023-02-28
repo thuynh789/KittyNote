@@ -4,6 +4,7 @@ import { createNote_thunk, getUserNotes_thunk, getOneNote_thunk } from '../../st
 import { getUserNotebooks_thunk } from '../../store/notebooks';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
+import './NewNoteForm.css'
 
 
 export default function CreateNoteForm() {
@@ -46,37 +47,39 @@ export default function CreateNoteForm() {
     };
 
     return (
-        <div>
+        <div className='newnote'>
             <div className="form-header">
                 <h1>New Note</h1>
             </div>
 
-            <section className='form-container'>
+            <div className='form-container'>
                 <ul>{errors.map((error) => (
                     <li key={error}>{error}</li>
                 ))}</ul>
                 <form className='form-body' onSubmit={handleSubmit}>
                     <label>Name
-                        <input className='note-form-input'
+                        <input className='inp1'
                             type="text"
                             required
                             value={title}
                             minLength='3'
                             maxLength='100'
+                            placeholder='name'
                             onChange={enterTitle}
                         />
                     </label>
-                    <label>Make a note
-                        <input className='note-form-input'
+                    <label className='inp2'>Make a note
+                        <textarea className='input2'
                             type="text"
                             required
                             value={content}
                             maxLength='1000'
+                            placeholder=''
                             onChange={enterContent}
                         />
                     </label>
-                    <label className="notebook">Select a notebook:
-                        <select value={notebookId} onChange={enterNotebookId}>
+                    <label className="inp3">Select a notebook:
+                        <select className='newselect' value={notebookId} onChange={enterNotebookId}>
                             {/* <option value="">Select a notebook</option> */}
                             {Object.values(notebooks).map((notebook) => (
                             <option key={notebook.id} value={notebook.id}>
@@ -86,11 +89,11 @@ export default function CreateNoteForm() {
                         </select>
                     </label>
                     <button
-                        className='button form-button'
+                        className='form-button'
                         type="submit"
                     >Submit</button>
                 </form>
-            </section>
+            </div>
         </div>
     )
 }

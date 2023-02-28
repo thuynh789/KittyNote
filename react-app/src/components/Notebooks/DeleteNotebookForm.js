@@ -26,13 +26,13 @@ export default function DeleteNotebookForm({notebookId}) {
     };
 
     return (
-        <div>
+        <div className='newnote'>
             <div className="form-header">
                 <h1>Delete notebook?</h1>
                 <p>(This is permanent and cannot be undone.)</p>
             </div>
             <form onSubmit={handleSubmit}>
-              <button className="form-button" type="submit">Confirm Delete</button>
+              <button className="delete-button" type="submit">Confirm Delete</button>
             </form>
 {/*
                 <form className='form-body' onSubmit={handleSubmit}>

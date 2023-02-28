@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { updateNotebook_thunk, getUserNotebooks_thunk, getOneNotebook_thunk } from '../../store/notebooks';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
+import "../Notes/NewNoteForm.css"
 
 
 export default function EditNotebookForm({myNotebook}) {
@@ -39,10 +40,10 @@ export default function EditNotebookForm({myNotebook}) {
 
     return (
         <>
-            <div className='edit-form'>
+            <div className='form-header'>
                 <h1>Rename your notebook</h1>
             </div>
-            <section className='edit-container'>
+            <section className='form-container'>
                 <div className='edit-errors'>
                     <ul> {errors.map((error) => (
                         <li key={error}>{error}</li>
@@ -50,17 +51,19 @@ export default function EditNotebookForm({myNotebook}) {
                     </ul>
                 </div>
 
-                <form className='edit-form-body' onSubmit={(e) => handleSubmit(e,myNotebook?.id)}>
-                    <textarea className='edit-form-input'
-                        type="text"
-                        placeholder={myNotebook?.title}
-                        required
-                        minLength= '1'
-                        maxLength= '100'
-                        value={title}
-                        onChange={updateTitle}
-                    />
-                    <button className='edit-form-button' type="submit">Save</button>
+                <form className='form-body' onSubmit={(e) => handleSubmit(e,myNotebook?.id)}>
+                    <label>Name
+                        <input className='edit-notebook-input'
+                            type="text"
+                            placeholder={myNotebook?.title}
+                            required
+                            minLength= '1'
+                            maxLength= '100'
+                            value={title}
+                            onChange={updateTitle}
+                        />
+                    </label>
+                    <button className='form-button' type="submit">Save</button>
                 </form>
             </section>
         </>
