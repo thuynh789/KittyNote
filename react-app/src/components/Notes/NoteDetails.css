@@ -1,6 +1,6 @@
 .note-header{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .notes-title{

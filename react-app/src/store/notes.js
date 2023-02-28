@@ -33,7 +33,6 @@ export const deleteNote_AC= (noteId) => ({
 
 
 // THUNKS
-
 export const getUserNotes_thunk = () => async (dispatch) => {
   const res = await fetch('/api/notes/')
   // console.log(res)
@@ -59,12 +58,13 @@ export const getOneNote_thunk= (noteId) => async (dispatch) => {
 }
 
 export const createNote_thunk= (note) => async (dispatch) => {
+    // console.log(note)
   const res = await fetch(`/api/notes/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(note),
   })
-  // console.log(res)
+//   console.log(res)
   if (res.ok) {
     const data = await res.json();
     // console.log(data)
@@ -74,8 +74,8 @@ export const createNote_thunk= (note) => async (dispatch) => {
   return res
 }
 
-export const updateNote_thunk= (note) => async (dispatch) => {
-  const res = await fetch(`/api/notes/${note.id}`, {
+export const updateNote_thunk= (noteId, note) => async (dispatch) => {
+  const res = await fetch(`/api/notes/${noteId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(note),
@@ -112,7 +112,7 @@ export default function noteReducer(state = initialState, action) {
   switch (action.type) {
 
     case GET_USER_NOTES: {
-      const newState = { allNotes: {}, singleNote: {}}
+      const newState = { ...state, allNotes: {} }
       action.payload.forEach(note => {
         newState.allNotes[note.id] = note
       })
@@ -121,15 +121,14 @@ export default function noteReducer(state = initialState, action) {
 
     case ONE_NOTE: {
       const newState = {...state, singleNote: {}}
-      // console.log(newState)
       newState.singleNote = action.payload
-      // console.log(newState)
       return newState
     }
 
     case CREATE_NOTE: {
       const newState = {...state, singleNote: {}}
       newState.allNotes[action.payload.id] = action.payload
+    //   console.log(newState)
       return newState
     }
 
@@ -137,6 +136,8 @@ export default function noteReducer(state = initialState, action) {
       const newState = {...state, singleNote: {}}
       console.log(newState)
       newState.allNotes[action.payload.id] = action.payload
+      newState.singleNote = action.payload
+      console.log(newState)
       return newState
     }
 
