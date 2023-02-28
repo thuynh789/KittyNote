@@ -59,8 +59,8 @@ export default function NoteDetails(){
         <div className='notebook-container'>
             <div className='note-header'>
                 <div className="first">
-                    <label className="notebook">Notebook:
-                        <select value={notebookId} onChange={changeNotebookId}>
+                    <label className="notebookdrop">Notebook:
+                        <select className='select2' value={notebookId} onChange={changeNotebookId}>
                             {/* <option value="">Select a notebook</option> */}
                             {Object.values(notebooks).map((notebook) => (
                             <option key={notebook.id} value={notebook.id}>
@@ -71,8 +71,9 @@ export default function NoteDetails(){
                     </label>
                 </div>
                 <div className="second">
-                    <button onClick={handleEdit}>Save</button>
+                    <button className="save" onClick={handleEdit}>Save</button>
                     <OpenModalButton
+                        className='deletenote'
                         modalComponent={<DeleteNoteForm noteId={noteId}/>}
                         buttonText='Delete'
                     />
@@ -97,6 +98,7 @@ export default function NoteDetails(){
                 <div className="note-content">
                     <textarea
                     className="notes-body"
+                    style={{ fontSize: 'large'}}
                     value={noteContent}
                     placeholder="Content"
                     // maxLength='1000'

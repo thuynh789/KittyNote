@@ -46,17 +46,19 @@ export default function CreateNotebookForm() {
                     <li key={error}>{error}</li>
                 ))}</ul>
                 <form className='form-body' onSubmit={handleSubmit}>
-                    <label>Name </label>
-                    <input className='notebook-form-input'
-                        type="name"
-                        required
-                        value={title}
-                        minLength= '1'
-                        maxLength= '100'
-                        onChange={enterTitle}
-                    />
+                    <label>Name
+                        <input className='notebook-form-input'
+                            type="name"
+                            required
+                            value={title}
+                            minLength= '1'
+                            maxLength= '100'
+                            placeholder='name'
+                            onChange={enterTitle}
+                        />
+                    </label>
                     <button
-                        className='button form-button'
+                        className='form-button'
                         type="submit"
                     >Submit</button>
                 </form>
