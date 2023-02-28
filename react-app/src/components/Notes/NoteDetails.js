@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneNote_thunk, updateNote_thunk, getUserNotes_thunk } from "../../store/notes";
+import { getUserNotebooks_thunk } from "../../store/notebooks";
 import { useParams } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
@@ -13,6 +14,7 @@ export default function NoteDetails(){
     const {noteId} = useParams();
     console.log(noteId)
     const myNote = useSelector(state => state.notes.singleNote)
+    const notebooks = useSelector(state =>state.notebooks.allNotebooks)
     // const myNote = useSelector(state => state.notes.allNotes[noteId])
     console.log(myNote)
     // console.log(myNote2)
@@ -23,14 +25,19 @@ export default function NoteDetails(){
     const [noteTitle, setNoteTitle] = useState("");
     const [errors, setErrors] = useState([]);
     const {closeModal} = useModal()
+    const [notebookId, setNotebookId]= useState('');
+    const changeNotebookId = (e) => setNotebookId(e.target.value);
+
 
     useEffect(()=>{
         dispatch(getOneNote_thunk(noteId))
+        dispatch(getUserNotebooks_thunk())
     },[dispatch, noteId])
 
     useEffect(() => {
 		setNoteTitle(myNote?.title || "");
 		setNoteContent(myNote?.content || "");
+        setNotebookId(myNote?.notebookId || "");
       }, [myNote]);
 
     const handleEdit = async (e) => {
@@ -38,7 +45,7 @@ export default function NoteDetails(){
         const editedNote = {
             title: noteTitle,
             content: noteContent,
-            notebookId: myNote.notebookId
+            notebookId: parseInt(notebookId)
         }
 
         dispatch(updateNote_thunk(noteId, editedNote))
@@ -51,11 +58,23 @@ export default function NoteDetails(){
     return (
         <div className='notebook-container'>
             <div className='note-header'>
+                <div>
+                    <label className="notebook">Select a notebook:
+                        <select value={notebookId} onChange={changeNotebookId}>
+                            {/* <option value="">Select a notebook</option> */}
+                            {Object.values(notebooks).map((notebook) => (
+                            <option key={notebook.id} value={notebook.id}>
+                                {notebook.title}
+                            </option>
+                            ))}
+                        </select>
+                    </label>
+                </div>
                 <button onClick={handleEdit}>Save</button>
-                    <OpenModalButton
-                        modalComponent={<DeleteNoteForm noteId={noteId}/>}
-                        buttonText='Delete'
-                    />
+                <OpenModalButton
+                    modalComponent={<DeleteNoteForm noteId={noteId}/>}
+                    buttonText='Delete'
+                />
             </div>
             <div classNAme='note-page'>
                 <div className="note-title">

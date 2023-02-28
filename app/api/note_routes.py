@@ -35,9 +35,11 @@ def get_one_note(id):
 @note_routes.route("/", methods=['POST'])
 @login_required
 def create_note():
+    print('----------------THIS IS CREATE ROUTE--------------')
     form = NoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     data = form.data
+    print(data)
 
     if form.validate_on_submit():
         note = Note(
@@ -68,6 +70,7 @@ def update_note(id):
     if form.validate_on_submit():
         note.title = form.data['title']
         note.content = form.data['content']
+        note.notebookId = form.data['notebookId']
         db.session.commit()
         return note.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { createNote_thunk, getUserNotes_thunk, getOneNote_thunk } from '../../store/notes';
+import { getUserNotebooks_thunk } from '../../store/notebooks';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
 
@@ -9,14 +10,20 @@ export default function CreateNoteForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     // const user = useSelector((state) => state.session.user);
-    // const notebooks = state.notebooks.allNotebooks
+    const notebooks = useSelector(state =>state.notebooks.allNotebooks)
+    console.log(notebooks)
 
 
     const [title, setTitle] = useState('');
     const enterTitle = (e) => setTitle(e.target.value);
     const [content, setContent]= useState('');
     const enterContent = (e) => setContent(e.target.value);
+    const [notebookId, setNotebookId]= useState('');
+    const enterNotebookId = (e) => setNotebookId(e.target.value);
 
+    useEffect(() => {
+		dispatch(getUserNotebooks_thunk())
+	}, [dispatch]);
 
     const [errors, setErrors] = useState([]);
     const {closeModal} = useModal()
@@ -26,12 +33,14 @@ export default function CreateNoteForm() {
         e.preventDefault();
         const note = {
             title,
-            content
+            content,
+            notebookId: parseInt(notebookId)
         }
+        console.log(note)
         dispatch(createNote_thunk(note))
             .then(() => dispatch(getUserNotes_thunk()))
-            // .then(() => dispatch(getOneNote_thunk()))
-            .then(() => history.push(`/notes`))
+            // .then((note) => dispatch(getOneNote_thunk(note.id)))
+            // .then((note) => history.push(`/notes/${note.id}`))
             .then(closeModal)
 
     };
@@ -62,6 +71,16 @@ export default function CreateNoteForm() {
                             value={content}
                             onChange={enterContent}
                         />
+                    </label>
+                    <label className="notebook">Select a notebook:
+                        <select value={notebookId} onChange={enterNotebookId}>
+                            {/* <option value="">Select a notebook</option> */}
+                            {Object.values(notebooks).map((notebook) => (
+                            <option key={notebook.id} value={notebook.id}>
+                                {notebook.title}
+                            </option>
+                            ))}
+                        </select>
                     </label>
                     <button
                         className='button form-button'

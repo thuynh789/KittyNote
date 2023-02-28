@@ -58,12 +58,13 @@ export const getOneNote_thunk= (noteId) => async (dispatch) => {
 }
 
 export const createNote_thunk= (note) => async (dispatch) => {
+    // console.log(note)
   const res = await fetch(`/api/notes/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(note),
   })
-  // console.log(res)
+//   console.log(res)
   if (res.ok) {
     const data = await res.json();
     // console.log(data)
@@ -127,6 +128,7 @@ export default function noteReducer(state = initialState, action) {
     case CREATE_NOTE: {
       const newState = {...state, singleNote: {}}
       newState.allNotes[action.payload.id] = action.payload
+    //   console.log(newState)
       return newState
     }
 
