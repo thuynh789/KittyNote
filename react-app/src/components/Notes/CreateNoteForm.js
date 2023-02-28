@@ -18,7 +18,7 @@ export default function CreateNoteForm() {
     const enterTitle = (e) => setTitle(e.target.value);
     const [content, setContent]= useState('');
     const enterContent = (e) => setContent(e.target.value);
-    const [notebookId, setNotebookId]= useState('');
+    const [notebookId, setNotebookId]= useState(1);
     const enterNotebookId = (e) => setNotebookId(e.target.value);
 
     useEffect(() => {
@@ -34,13 +34,13 @@ export default function CreateNoteForm() {
         const note = {
             title,
             content,
-            notebookId: parseInt(notebookId)
+            notebookId: notebookId
         }
         console.log(note)
         dispatch(createNote_thunk(note))
             .then(() => dispatch(getUserNotes_thunk()))
             // .then((note) => dispatch(getOneNote_thunk(note.id)))
-            // .then((note) => history.push(`/notes/${note.id}`))
+            // .then(() => history.push(`/notes/${note.id}`))
             .then(closeModal)
 
     };
@@ -61,6 +61,8 @@ export default function CreateNoteForm() {
                             type="text"
                             required
                             value={title}
+                            minLength='3'
+                            maxLength='100'
                             onChange={enterTitle}
                         />
                     </label>
@@ -69,6 +71,7 @@ export default function CreateNoteForm() {
                             type="text"
                             required
                             value={content}
+                            maxLength='1000'
                             onChange={enterContent}
                         />
                     </label>
