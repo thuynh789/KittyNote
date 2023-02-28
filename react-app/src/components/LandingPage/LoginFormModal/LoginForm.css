@@ -31,6 +31,7 @@
 
 .lab1, .lab2{
     font-size: x-large;
+    color: darkgreen;
 }
 .but1{
     margin-top: 3rem;
@@ -43,4 +44,5 @@ input{
     height: 2rem;
     width: 10rem;
     font-size: large;
+    color: rgb(54, 54, 85);
 }
