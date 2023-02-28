@@ -55,6 +55,8 @@ export default function EditNotebookForm({myNotebook}) {
                         type="text"
                         placeholder={myNotebook?.title}
                         required
+                        minLength= '1'
+                        maxLength= '100'
                         value={title}
                         onChange={updateTitle}
                     />

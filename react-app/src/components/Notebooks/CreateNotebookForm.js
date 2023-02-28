@@ -51,6 +51,8 @@ export default function CreateNotebookForm() {
                         type="name"
                         required
                         value={title}
+                        minLength= '1'
+                        maxLength= '100'
                         onChange={enterTitle}
                     />
                     <button
