@@ -58,8 +58,8 @@ export default function NoteDetails(){
     return (
         <div className='notebook-container'>
             <div className='note-header'>
-                <div>
-                    <label className="notebook">Select a notebook:
+                <div className="first">
+                    <label className="notebook">Notebook:
                         <select value={notebookId} onChange={changeNotebookId}>
                             {/* <option value="">Select a notebook</option> */}
                             {Object.values(notebooks).map((notebook) => (
@@ -70,11 +70,13 @@ export default function NoteDetails(){
                         </select>
                     </label>
                 </div>
-                <button onClick={handleEdit}>Save</button>
-                <OpenModalButton
-                    modalComponent={<DeleteNoteForm noteId={noteId}/>}
-                    buttonText='Delete'
-                />
+                <div className="second">
+                    <button onClick={handleEdit}>Save</button>
+                    <OpenModalButton
+                        modalComponent={<DeleteNoteForm noteId={noteId}/>}
+                        buttonText='Delete'
+                    />
+                </div>
             </div>
             <div classNAme='note-page'>
                 <div className="note-title">
