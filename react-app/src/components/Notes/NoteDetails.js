@@ -45,7 +45,7 @@ export default function NoteDetails(){
         const editedNote = {
             title: noteTitle,
             content: noteContent,
-            notebookId: parseInt(notebookId)
+            notebookId: notebookId
         }
 
         dispatch(updateNote_thunk(noteId, editedNote))
@@ -84,6 +84,8 @@ export default function NoteDetails(){
                     className="notes-title"
                     value={noteTitle}
                     placeholder="Title"
+                    // minLength='3'
+                    // maxLength='100'
                     onChange={(e) => setNoteTitle(e.target.value)}
                     ></input>
                 </div>
@@ -97,6 +99,7 @@ export default function NoteDetails(){
                     className="notes-body"
                     value={noteContent}
                     placeholder="Content"
+                    // maxLength='1000'
                     onChange={(e) => setNoteContent(e.target.value)}
                     ></textarea>
                 </div>
