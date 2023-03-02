@@ -29,7 +29,7 @@ export default function DeleteNotebookForm({notebookId}) {
         <div className='newnote'>
             <div className="form-header">
                 <h1>Delete notebook?</h1>
-                <p>(This is permanent and cannot be undone.)</p>
+                <h3>(Any notes in the notebook will be deleted. This is permanent and cannot be undone.)</h3>
             </div>
             <form onSubmit={handleSubmit}>
               <button className="delete-button" type="submit">Confirm Delete</button>
