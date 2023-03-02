@@ -3,6 +3,7 @@
     background-color: aliceblue;
     overflow-y: scroll;
     border-right: dotted darkgray;
+    border-left: dotted darkgray;
 }
 
 .header{
@@ -35,4 +36,6 @@
     justify-content: center;
     font-size: x-large;
     margin-top: 15rem;
+    color: grey;
+    padding: 1rem;
 }
