@@ -37,3 +37,13 @@
 .second button{
     font-size: medium;
 }
+
+.errorsedit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: initial;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: red;
+}

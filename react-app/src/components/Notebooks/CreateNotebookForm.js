@@ -52,7 +52,7 @@ export default function CreateNotebookForm() {
                             required
                             value={title}
                             minLength= '1'
-                            maxLength= '100'
+                            maxLength= '50'
                             placeholder='name'
                             onChange={enterTitle}
                         />

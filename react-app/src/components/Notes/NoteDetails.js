@@ -40,6 +40,13 @@ export default function NoteDetails(){
         setNotebookId(myNote?.notebookId || "");
       }, [myNote]);
 
+    useEffect(() => {
+        const errors = [];
+        if (noteTitle.length < 1) errors.push('Title must be at least 1 character');
+        if (noteContent.length < 1) errors.push('Contents must be at least 1 character');
+        setErrors(errors);
+    }, [noteTitle, noteContent])
+
     const handleEdit = async (e) => {
         e.preventDefault();
         const editedNote = {
@@ -85,10 +92,17 @@ export default function NoteDetails(){
                     className="notes-title"
                     value={noteTitle}
                     placeholder="Title"
-                    // minLength='3'
-                    // maxLength='100'
+                    required
+                    minLength='3'
+                    maxLength='50'
                     onChange={(e) => setNoteTitle(e.target.value)}
                     ></input>
+                </div>
+                <div className='edit-errors'>
+                    <ul className="errorsedit"> {errors.map((error) => (
+                        <li key={error}>{error}</li>
+                    ))}
+                    </ul>
                 </div>
                 <div className="created">
                     Last edited:
@@ -101,7 +115,8 @@ export default function NoteDetails(){
                     style={{ fontSize: 'large'}}
                     value={noteContent}
                     placeholder="Content"
-                    // maxLength='1000'
+                    required
+                    maxLength='1000'
                     onChange={(e) => setNoteContent(e.target.value)}
                     ></textarea>
                 </div>
