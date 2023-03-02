@@ -63,13 +63,14 @@ Authenticated users can view, create, update, and delete notes and notebooks thr
 ## Notebooks:
 Authenticated users can view, create, update, and delete notebooks. 
 ![Screenshot 2023-03-02 at 8 24 54 AM](https://user-images.githubusercontent.com/113630766/222489558-b02708fd-e6a5-44cb-ae3b-ff9d4b8de477.png)
+New notebook form:
 ![Screenshot 2023-03-02 at 8 25 15 AM](https://user-images.githubusercontent.com/113630766/222489698-ab4ffbbf-20ad-483d-9cab-8659f4b954a8.png)
 
 ## Notes:
 Authenticated users can view, create, update, and delete notes. 
-![Screenshot 2023-03-02 at 8 31 10 AM](https://user-images.githubusercontent.com/113630766/222491609-b2103766-b068-4e48-b4ed-15609272b546.png)
 ![Screenshot 2023-03-02 at 8 30 42 AM](https://user-images.githubusercontent.com/113630766/222491492-df6f3e9d-166e-4ea3-b61e-305da61504cd.png)
-![Screenshot 2023-03-02 at 8 31 20 AM](https://user-images.githubusercontent.com/113630766/222491677-5f559641-a83f-4db4-9c6c-9be1752bb0cd.png)
+Users can create a new note and add it to a notebook. Users are also able to move notes between notebooks. 
+![Screenshot 2023-03-02 at 8 34 49 AM](https://user-images.githubusercontent.com/113630766/222492616-a24e3a88-a539-470a-ad60-29ad41f72710.png)
 
 
 
