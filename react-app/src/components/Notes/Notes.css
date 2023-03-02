@@ -1,7 +1,8 @@
 .note-container{
     width: 20%;
-    background-color: bisque;
+    background-color: aliceblue;
     overflow-y: scroll;
+    border-right: dotted darkgray;
 }
 
 .header{
@@ -12,7 +13,7 @@
 }
 
 .note-card{
-    border-top: solid darkgray;
+    border-top: dotted darkgray;
     text-align: left;
     padding-bottom: 1rem;
     padding-left: 1rem;
@@ -20,7 +21,7 @@
 }
 
 .note-card:hover {
-    background-color: aliceblue;
+    background-color: darkgrey;
     cursor: pointer;
 }
 
@@ -28,3 +29,10 @@
     width: 8px;
     background-color: transparent;
   }
+
+.note-notes-message{
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    margin-top: 15rem;
+}
