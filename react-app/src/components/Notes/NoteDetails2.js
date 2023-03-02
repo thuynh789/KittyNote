@@ -59,7 +59,7 @@ export default function NoteDetails(){
             .then(() => dispatch(getOneNote_thunk(noteId)))
             .then(() => dispatch(getUserNotes_thunk()))
             .then(() => dispatch(getUserNotebooks_thunk()))
-            .then(() => history.push(`/notes/${noteId}`))
+            .then(() => history.push(`/notebooks/${notebookId}`))
 
     };
 

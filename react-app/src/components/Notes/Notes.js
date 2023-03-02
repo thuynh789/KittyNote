@@ -13,7 +13,7 @@ export default function Notes() {
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const notes = useSelector((state) =>state.notes.allNotes);
-    // console.log(notes)
+    console.log(notes)
 
     useEffect(() => {
         dispatch(getUserNotes_thunk());
@@ -37,6 +37,9 @@ export default function Notes() {
             </div>
         </div>
 
+        {Object.keys(notes).length === 0 ? (
+             <div className="no-notes-message">STEP 2: Create a note! ⬆️ </div>
+         ) : (
         <div className="notes-list">
             {Object.values(notes).map((note) => (
               <div className='note-card' key={note.id}
@@ -52,7 +55,7 @@ export default function Notes() {
               </div>
             ))}
         </div>
-
+         )}
       </div>
     )
 }

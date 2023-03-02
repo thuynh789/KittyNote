@@ -11,6 +11,7 @@ import Notebooks from "./components/Notebooks/Notebooks"
 import NotebookDetails from "./components/Notebooks/NotebookDetails";
 import Notes from "./components/Notes/Notes"
 import NoteDetails from "./components/Notes/NoteDetails";
+import NoteDetails2 from "./components/Notes/NoteDetails2";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,8 +38,8 @@ function App() {
           </Route> */}
           <ProtectedRoute path="/home" exact={true}>
             <Navigation />
-            <Notes/>
             <Notebooks />
+            <Notes/>
           </ProtectedRoute>
           <ProtectedRoute path='/notebooks' exact={true}>
             <Navigation />
@@ -47,6 +48,10 @@ function App() {
           <ProtectedRoute path='/notebooks/:notebookId' exact={true}>
             <Navigation />
             <NotebookDetails />
+          </ProtectedRoute>
+          <ProtectedRoute path='/notebooks/:notebookId/:noteId' exact={true}>
+            <Navigation />
+            <NoteDetails2 />
           </ProtectedRoute>
           <ProtectedRoute path='/notes' exact={true}>
             <Navigation />

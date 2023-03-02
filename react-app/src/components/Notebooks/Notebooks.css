@@ -24,3 +24,12 @@ td, th{
     padding: 9px;
     text-align: left;
 }
+
+.no-notebooks{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 5rem;
+    font-size: x-large;
+    color: brown;
+}

@@ -14,7 +14,7 @@ export default function Notebooks() {
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const notebooks = useSelector((state) =>state.notebooks.allNotebooks);
-    // console.log(notebooks)
+    console.log(notebooks)
 
     useEffect(() => {
         dispatch(getUserNotebooks_thunk());
@@ -51,31 +51,43 @@ export default function Notebooks() {
                                 <th>ACTIONS</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {Object.values(notebooks).map((notebook) => (
-                                <React.Fragment key={notebook.id}>
-                                <tr>
-                                    <td>
-                                        <Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
-                                    </td>
-                                    <td>{user.username}</td>
-                                    <td>{notebook.updated_at}</td>
-                                    <td>
-                                        <OpenModalButton
-                                            modalComponent={<EditNotebookForm myNotebook={notebook} />}
-                                            // className="fa-solid fa-pen-to-square"
-                                            buttonText='Rename'
-                                        />
-                                        <OpenModalButton
-                                            modalComponent={<DeleteNotebookForm notebookId={notebook.id}/>}
-                                            // className="fa-solid fa-pen-to-square"
-                                            buttonText='Delete'
-                                        />
-                                    </td>
-                                </tr>
-                                </React.Fragment>
-                            ))}
-                        </tbody>
+
+                        {Object.keys(notebooks).length === 0 ? (
+                            <div className="no-notebooks" style={{textAlign: 'right'}}>
+                                <div className="forst" style={{paddingRight: '3rem'}}>
+                                    Welcome to KittyNote!
+                                </div>
+                                <div>
+                                    STEP 1: Create your first notebook! ↗️
+                                </div>
+                            </div>
+                        ) : (
+                            <tbody>
+                                {Object.values(notebooks).map((notebook) => (
+                                    <React.Fragment key={notebook.id}>
+                                    <tr>
+                                        <td>
+                                            <Link to={`/notebooks/${notebook.id}`}>{notebook.title}</Link>
+                                        </td>
+                                        <td>{user.username}</td>
+                                        <td>{notebook.updated_at}</td>
+                                        <td>
+                                            <OpenModalButton
+                                                modalComponent={<EditNotebookForm myNotebook={notebook} />}
+                                                // className="fa-solid fa-pen-to-square"
+                                                buttonText='Rename'
+                                            />
+                                            <OpenModalButton
+                                                modalComponent={<DeleteNotebookForm notebookId={notebook.id}/>}
+                                                // className="fa-solid fa-pen-to-square"
+                                                buttonText='Delete'
+                                            />
+                                        </td>
+                                    </tr>
+                                    </React.Fragment>
+                                ))}
+                            </tbody>
+                        )}
                     </table>
                 </div>
             </div>

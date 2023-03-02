@@ -128,6 +128,7 @@ export default function noteReducer(state = initialState, action) {
     case CREATE_NOTE: {
       const newState = {...state, singleNote: {}}
       newState.allNotes[action.payload.id] = action.payload
+      newState.singleNote = action.payload
     //   console.log(newState)
       return newState
     }
