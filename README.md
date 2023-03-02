@@ -58,6 +58,7 @@ Users can log in, sign up, or log in as a demo user. Users must be logged in to 
 ## Home Page: 
 Authenticated users can view, create, update, and delete notes and notebooks through the home page or through links in the left side nav bar. 
 ![Screenshot 2023-03-02 at 8 20 19 AM](https://user-images.githubusercontent.com/113630766/222487752-cad01c45-04e4-42a7-9090-7fa77f9319e6.png)
+![Screenshot 2023-03-02 at 8 59 22 AM](https://user-images.githubusercontent.com/113630766/222498985-cd4f4462-8728-4827-a239-85b46c29f804.png)
 
 
 ## Notebooks:
