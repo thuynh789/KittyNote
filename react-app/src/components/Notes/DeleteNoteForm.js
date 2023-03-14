@@ -29,7 +29,7 @@ export default function DeleteNoteForm({noteId}) {
         <div className='newnote'>
             <div className="form-header">
                 <h1>Delete note?</h1>
-                <p>(This is permanent and cannot be undone.)</p>
+                <p style={{color:'red'}}>(This is permanent and cannot be undone.)</p>
             </div>
             <form onSubmit={handleSubmit}>
               <button className="delete-button" type="submit">Confirm Delete</button>
