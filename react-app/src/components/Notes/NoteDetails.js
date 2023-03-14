@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneNote_thunk, updateNote_thunk, getUserNotes_thunk } from "../../store/notes";
 import { getUserNotebooks_thunk } from "../../store/notebooks";
@@ -8,6 +8,8 @@ import { useModal } from '../../context/Modal';
 import OpenModalButton from "../LandingPage/OpenModalButton";
 import DeleteNoteForm from "./DeleteNoteForm";
 import "./NoteDetails.css"
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export default function NoteDetails(){
     const myNotebooks = useSelector(state => state.notebooks.allNotebooks)
@@ -27,6 +29,7 @@ export default function NoteDetails(){
     const {closeModal} = useModal()
     const [notebookId, setNotebookId]= useState('');
     const changeNotebookId = (e) => setNotebookId(e.target.value);
+    const quillRef = useRef();
 
 
     useEffect(()=>{
@@ -111,7 +114,22 @@ export default function NoteDetails(){
                     {myNote.updated_at}
                 </div>
                 <div className="note-content">
-                    <textarea
+                    <ReactQuill
+                        className='react-quill'
+                        value={noteContent}
+                        onChange={(value) => setNoteContent(value)}
+                        modules={{
+                            toolbar: [
+                                [{ header: [1, 2, 3, false] }],
+                                ['bold', 'italic', 'underline', 'strike'],
+                                [{ list: 'ordered' }, { list: 'bullet' }],
+                                [{ color: [] }, { background: [] }],
+                                ['clean'],
+                            ],
+                        }}
+                        ref={quillRef}
+                    />
+                    {/* <textarea
                     className="notes-body"
                     style={{ fontSize: 'large'}}
                     value={noteContent}
@@ -119,7 +137,7 @@ export default function NoteDetails(){
                     required
                     maxLength='1000'
                     onChange={(e) => setNoteContent(e.target.value)}
-                    ></textarea>
+                    ></textarea> */}
                 </div>
             </div>
         </div>

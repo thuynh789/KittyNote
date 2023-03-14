@@ -22,3 +22,7 @@ body{
     width: 4px;
     background-color: darkgray;
   }
+
+  .ql-toolbar.ql-snow {
+    border: 1px solid;
+}
