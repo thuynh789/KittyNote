@@ -1,0 +1,24 @@
+.fullErrorDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 27%;
+}
+.message{
+    text-align: center;
+    font-size: x-large;
+    padding: 1em;
+    background-color: aliceblue;
+    border: darkgray dotted;
+    border-radius: 2em;
+}
+
+.redirect{
+    font-size: large;
+    padding-top: 0.5rem;
+}
+
+.four{
+    font-weight: bolder;
+    padding-bottom: 0.5rem;
+}

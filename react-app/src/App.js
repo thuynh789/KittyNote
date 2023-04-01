@@ -12,6 +12,7 @@ import NotebookDetails from "./components/Notebooks/NotebookDetails";
 import Notes from "./components/Notes/Notes"
 import NoteDetails from "./components/Notes/NoteDetails";
 import NoteDetails2 from "./components/Notes/NoteDetails2";
+import ErrorCat from "./components/404Page/404Page";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,9 @@ function App() {
             <Notes />
             <NoteDetails />
           </ProtectedRoute>
+          <Route>
+            <ErrorCat/>
+          </Route>
         </Switch>
       )}
     </>
