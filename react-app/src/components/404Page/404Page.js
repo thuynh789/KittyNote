@@ -1,21 +1,27 @@
 import cat from '../Images/oh-no.png'
 import { Link } from 'react-router-dom';
+import './404Page.css'
 
 export default function ErrorCat() {
 	return (
-		<div id='fullErrorDiv'>
+		<div className='fullErrorDiv'>
 			<div className='errorImgDiv'>
-			<img
-				src= {cat}
-				alt='lost cat'
-				/>
-            <div>
-            Meow-sorry! Can't find what you're looking for, hooman.
-            <br />
-            Maybe my fluffy paws accidentally pressed a wrong button.
+                <img
+                    src= {cat}
+                    alt='lost cat'
+                    />
+                <div className='message'>
+                    <div className='four'>
+                        404 Page Not Found
+                    </div>
+                    Meow-sorry! Can't find what you're looking for, hooman.
+                    <br />
+                    Maybe my fluffy paws accidentally pressed a wrong button. 😿
+                    <div className='redirect'>
+                        <Link to='/home'>Click here to return to Home</Link>
+                    </div>
+			    </div>
             </div>
-			</div>
-			<Link to='/home'>Click here to return to Home</Link>
 		</div>
 	);
 }
