@@ -38,7 +38,7 @@ export default function Notes() {
         </div>
 
         {Object.keys(notes).length === 0 ? (
-             <div className="no-notes-message">STEP 2: Create a note! ⬆️ </div>
+             <div className="no-notes-message">STEP 2: Create a new note! ⬆️ </div>
          ) : (
         <div className="notes-list">
             {Object.values(notes).map((note) => (
