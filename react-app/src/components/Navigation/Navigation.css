@@ -30,11 +30,27 @@
   font-size: xx-large;
 }
 
-.logout-button{
-  font-size: x-large;
-  margin-top: 4rem;
+.logo img{
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
 }
 
-.nav1, .nav2, .nav3, .nav4{
+.logout-button{
+  font-size: x-large;
+  margin-bottom: 1rem;
+}
+
+.navs {
+  display: flex;
+  height: 50%;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.nav1{
   margin-top: 2rem;
 }
