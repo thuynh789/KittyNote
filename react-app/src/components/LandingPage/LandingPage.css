@@ -1,16 +1,22 @@
 html, body {
-    margin: 0;          /* remove default outer spacing */
-    min-height: 100%;
+    margin: 0;
+    height: 100%;
 }
 
 body {
-    background-image:url('../Images/backgroundp.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+    /* background-image:url('../Images/backgroundp.png');
+    height: 100vh; */
+    /* background-repeat: no-repeat;
+    background-size: cover; */
 }
 
 .splash-container{
-    width: 100%;
+    background-image:url('../Images/backgroundp.png');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -19,43 +25,67 @@ body {
 .splash-logo img{
     width: 125%;
     padding-left: 0em;
-    margin-top: 7em;
+    padding-top: 7em;
 }
-
-
 
 .splash {
     width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
-    padding-top: 4em;
     border-left: 0em;
+  }
+
+.outline-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 3;
+    margin: 0 auto;
+    flex-shrink: 0;
+    margin-top: 7em;
+  }
+
+.outline-image {
+    display: block;
+    width: 100%;
   }
 
 .buttons {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
   }
 
+.footers{
+    /* width: 100% ; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: x-large;
+    flex-grow: 1;
+    padding-bottom: 0.5em;
+}
 
 .footer{
-    font-size: x-large;
+    text-align: center;
 }
 
 .rightside-footer{
-    font-size: large;
+    width: 50%;
+    font-size: 2vw;
     display: flex;
     justify-content: space-around;
 }
 
-.button1, .button2, .button3, .footers {
+/* .button1, .button2, .button3, .footers {
     padding-top: 6em;
 }
 
@@ -63,11 +93,11 @@ body {
     display: flex;
     justify-content: center;
 }
-
+*/
 .button1 button, .button2 button, .button3 button {
-    height: 60px;
-    width: 170px;
-    border-radius: 25px;
-    font-size: larger;
+    height: 8vh;
+    width: 13vw;
+    border-radius: 4vw;
+    font-size: 2.5vw;
     text-transform: uppercase;
 }

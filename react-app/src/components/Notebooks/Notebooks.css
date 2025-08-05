@@ -27,6 +27,10 @@ td, th{
     text-align: left;
 }
 
+.nbbuttons {
+    text-align: center;
+}
+
 .no-notebooks{
     display: flex;
     flex-direction: column;

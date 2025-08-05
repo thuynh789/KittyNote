@@ -19,7 +19,9 @@ export default function LandingPage() {
         </div>
 
         <div className="splash">
-            <img src={outline} alt='outline' />
+        <div className="outline-wrapper">
+            <img src={outline} alt='outline' className="outline-image"  />
+
             <div className="buttons">
 
                 <div className="button1">
@@ -41,28 +43,28 @@ export default function LandingPage() {
                     <DemoUser />
                 </div>
 
-                <div className="footers">
-                    <div className="footer">Evernote clone by Tiana Huynh</div>
-                    <div className="rightside-footer">
-                    <a
-                        className="link-footer"
-                        href="https://www.linkedin.com/in/tiana-huynh-58b296168/"
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        <i className="fa-brands fa-linkedin fa-xl" />
-                    </a>
-                    <a
-                        className="link-footer"
-                        href="https://github.com/thuynh789/KittyNote"
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        <i className="fa-brands fa-github fa-xl" />
-                    </a>
-                    </div>
-                </div>
-
+            </div>
+        </div>
+            <div className="footers">
+                        <div className="footer">Evernote clone by Tiana Huynh</div>
+                        <div className="rightside-footer">
+                        <a
+                            className="link-footer"
+                            href="https://www.linkedin.com/in/tiana-huynh-58b296168/"
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            <i className="fa-brands fa-linkedin fa-xl" />
+                        </a>
+                        <a
+                            className="link-footer"
+                            href="https://github.com/thuynh789/KittyNote"
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            <i className="fa-brands fa-github fa-xl" />
+                        </a>
+                        </div>
             </div>
         </div>
 
