@@ -4,8 +4,10 @@
     font-size: larger;
     width: 50%;
     background-color: aliceblue;
-    background-image: url('../Images/cat-back.png');
+    background-image: url('../Images/cat-back.png'), url('../Images/cat-back.png');
     background-size: contain;
+    background-repeat: repeat-x, repeat-x;
+    background-position: top center, bottom center;
     border-radius: 1em;
     border: dotted darkgrey
 }
