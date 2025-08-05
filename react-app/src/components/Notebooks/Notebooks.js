@@ -44,7 +44,7 @@ export default function Notebooks() {
                 <div className="table">
                     <table>
                         <thead>
-                            <tr>
+                            <tr className="nbheaders">
                                 <th>TITLE</th>
                                 <th>CREATED BY</th>
                                 <th>UPDATED </th>
@@ -71,7 +71,7 @@ export default function Notebooks() {
                                         </td>
                                         <td>{user.username}</td>
                                         <td>{notebook.updated_at}</td>
-                                        <td>
+                                        <td className="nbbuttons">
                                             <OpenModalButton
                                                 modalComponent={<EditNotebookForm myNotebook={notebook} />}
                                                 // className="fa-solid fa-pen-to-square"
