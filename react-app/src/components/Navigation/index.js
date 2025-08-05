@@ -19,19 +19,21 @@ function Navigation(){
 			<div className='nav1'>
 				Hi {sessionUser?.username} !
 			</div>
-			<div className='nav2'>
-				<NavLink exact to="/home">Home</NavLink>
+			<div className='navs'>
+				<div className='nav2'>
+					<NavLink exact to="/home">Home</NavLink>
+				</div>
+				<div className='nav3'>
+					<NavLink className="navlink" to="/notebooks">
+					Notebooks
+					</NavLink>
+				</div>
+				<div className='nav4'>
+					<NavLink className="navlink" to="/notes">
+					Notes
+					</NavLink>
+				</div>
 			</div>
-			<div className='nav3'>
-          		<NavLink className="navlink" to="/notebooks">
-              	Notebooks
-          		</NavLink>
-       		</div>
-			<div className='nav4'>
-          		<NavLink className="navlink" to="/notes">
-              	Notes
-          		</NavLink>
-       		</div>
 			<div className='nav'>
 				<LogoutButton/>
 			</div>

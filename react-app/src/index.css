@@ -2,6 +2,7 @@
 
 * {
     font-family: 'Nanum Pen Script', cursive;
+    outline: 1px solid red !important;
 }
 
 #root{
