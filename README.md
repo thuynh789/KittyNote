@@ -21,7 +21,7 @@ Welcome to KittyNote, the cat-themed Evernote clone! Are you a cat lover looking
 # Getting Started:
 1. Download the starter by cloning this repo.
    ```bash
-   git clone https://github.com/ctam312/Plantsy.git
+   git clone https://github.com/thuynh789/KittyNote.git
    ```
 2. Install dependencies
    ```bash
