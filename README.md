@@ -34,7 +34,7 @@ Welcome to KittyNote, the cat-themed Evernote clone! Are you a cat lover looking
    DATABASE_URL=sqlite:///dev.db
    SCHEMA=flask_schema
    ```
-4. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+4. Activate the Pipenv environment, apply database migrations, seed the database, and start the Flask app
 
    ```bash
    pipenv shell
@@ -52,26 +52,23 @@ Welcome to KittyNote, the cat-themed Evernote clone! Are you a cat lover looking
 # Features Directions:
 
 ## Landing Page:
-Users can log in, sign up, or log in as a demo user. Users must be logged in to use features. 
+Users can log in, sign up, or log in as a demo user. Users must be logged in to use features.
 ![Screenshot 2023-03-02 at 8 17 46 AM](https://user-images.githubusercontent.com/113630766/222487026-4f6098d2-036a-4fcf-9f3f-276fd73dff5d.png)
 
-## Home Page: 
-Authenticated users can view, create, update, and delete notes and notebooks through the home page or through links in the left side nav bar. 
+## Home Page:
+Authenticated users can view, create, update, and delete notes and notebooks through the home page or through links in the left side nav bar.
 ![Screenshot 2023-03-02 at 8 20 19 AM](https://user-images.githubusercontent.com/113630766/222487752-cad01c45-04e4-42a7-9090-7fa77f9319e6.png)
 ![Screenshot 2023-03-02 at 8 59 22 AM](https://user-images.githubusercontent.com/113630766/222498985-cd4f4462-8728-4827-a239-85b46c29f804.png)
 
 
 ## Notebooks:
-Authenticated users can view, create, update, and delete notebooks. 
+Authenticated users can view, create, update, and delete notebooks.
 ![Screenshot 2023-03-02 at 8 24 54 AM](https://user-images.githubusercontent.com/113630766/222489558-b02708fd-e6a5-44cb-ae3b-ff9d4b8de477.png)
 New notebook form:
 ![Screenshot 2023-03-02 at 8 25 15 AM](https://user-images.githubusercontent.com/113630766/222489698-ab4ffbbf-20ad-483d-9cab-8659f4b954a8.png)
 
 ## Notes:
-Authenticated users can view, create, update, and delete notes. 
+Authenticated users can view, create, update, and delete notes.
 ![Screenshot 2023-03-02 at 8 30 42 AM](https://user-images.githubusercontent.com/113630766/222491492-df6f3e9d-166e-4ea3-b61e-305da61504cd.png)
-Users can create a new note and add it to a notebook. Users are also able to move notes between notebooks. 
+Users can create a new note and add it to a notebook. Users are also able to move notes between notebooks.
 ![Screenshot 2023-03-02 at 8 34 49 AM](https://user-images.githubusercontent.com/113630766/222492616-a24e3a88-a539-470a-ad60-29ad41f72710.png)
-
-
-
