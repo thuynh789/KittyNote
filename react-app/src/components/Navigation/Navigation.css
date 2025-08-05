@@ -11,6 +11,7 @@
   border-right: solid #868181;
   background-image: url('../Images/nav-background.png');
   background-color: #8d95a3;
+  height: 100vh;
   width: 30%;
   font-size: x-large;
   display: flex;
@@ -19,6 +20,9 @@
 }
 
 .navbar{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +32,7 @@
 
 .logout-button{
   font-size: x-large;
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 
 .nav1, .nav2, .nav3, .nav4{
