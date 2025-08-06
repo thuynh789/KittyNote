@@ -50,7 +50,7 @@ export default function LandingPage() {
                         <div className="rightside-footer">
                         <a
                             className="link-footer"
-                            href="https://www.linkedin.com/in/tiana-huynh-58b296168/"
+                            href="https://www.linkedin.com/in/tianaxuanhuynh/"
                             rel="noreferrer"
                             target="_blank"
                         >
